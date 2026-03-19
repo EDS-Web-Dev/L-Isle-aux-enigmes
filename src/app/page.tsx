@@ -542,9 +542,8 @@ function MissionCard({ data, meta, progress, distM, alwaysAccessible = false }: 
         {/* ACTIVE : meta-infos + gros bouton */}
         {state === "active" && (
           <>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center">
               <span className="text-[10px]" style={{ color: t.mutedColor }}>{total} étapes</span>
-              <DifficultyStars value={data.difficulty} color={t.accentColor} />
             </div>
             <Link href={`/chasse?parcours=${meta.file}`}
               onClick={() => sessionStorage.removeItem(`islo-intro-seen-${meta.file}`)}
@@ -755,23 +754,14 @@ export default function Home() {
         {/* ── Séparateur ── */}
         <div className="relative flex items-center gap-3 mb-6">
           <div className="flex-1 h-px" style={{ background: "rgba(242,212,121,0.25)" }} />
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-xl flex items-center justify-center text-base"
-              style={{ background: "rgba(242,212,121,0.2)" }}>📍</div>
-            <span className="text-sm font-extrabold" style={{ color: "#F2D479" }}>Aventures près de toi</span>
-          </div>
           <div className="flex-1 h-px" style={{ background: "rgba(242,212,121,0.25)" }} />
         </div>
 
         {/* ── Contenu géoloc ── */}
         <div className="relative">
-        <div className="flex items-center gap-2 mb-5">
-          <div className="w-8 h-8 rounded-xl flex items-center justify-center text-lg shrink-0"
-            style={{ background: "rgba(242,212,121,0.25)" }}>📍</div>
-          <div>
-            <h2 className="text-base font-extrabold leading-none" style={{ color: "#F2D479" }}>Aventures près de toi</h2>
-            <p className="text-sm font-extrabold mt-0.5" style={{ color: "#F2D479", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>Découvre ce qui t&apos;entoure</p>
-          </div>
+        <div className="flex flex-col items-center text-center mb-5">
+          <h2 className="text-base font-extrabold leading-none" style={{ color: "#F2D479" }}>Aventures près de toi</h2>
+          <p className="text-sm font-extrabold mt-0.5" style={{ color: "#F2D479", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>Découvre ce qui t&apos;entoure</p>
         </div>
 
         {/* Boussole — toujours visible */}
@@ -971,7 +961,7 @@ export default function Home() {
           {activeCard < ADVENTURES.length - 1 && (
             <div className="flex items-center gap-1 ml-2" style={{ color: "rgba(196,74,58,0.6)" }}>
               <style>{`@keyframes bounceX { 0%,100% { transform: translateX(0); } 50% { transform: translateX(6px); } }`}</style>
-              <span className="text-[11px] font-bold">Fait défiler !</span>
+              <span className="text-[11px] font-bold">Fais défiler !</span>
               <svg className="w-4 h-4" style={{ animation: "bounceX 0.8s ease-in-out infinite" }} viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638l-4.158-3.96a.75.75 0 011.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
               </svg>
@@ -1008,7 +998,7 @@ export default function Home() {
                 </div>
               </div>
               <span className="text-[10px] font-extrabold px-2 py-1 rounded-full shrink-0"
-                style={{ background: "rgba(217,122,43,0.2)", color: "#D97A2B" }}>Bientôt</span>
+                style={{ background: "rgba(217,122,43,0.2)", color: "#D97A2B" }}>Bientôt disponible</span>
             </div>
           ))}
         </div>
