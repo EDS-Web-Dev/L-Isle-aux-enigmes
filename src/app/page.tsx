@@ -27,6 +27,7 @@ interface AdventureMeta {
   file: string;
   emoji: string;
   illustration: string;
+  photo?: string;
   tags: string[];
   sector: string;
   theme: Theme;
@@ -97,6 +98,7 @@ const ADVENTURES: AdventureMeta[] = [
     file: "legrimoirperdudeclaudeauge",
     emoji: "📖",
     illustration: "📖✒️🔍",
+    photo: "/icons/livres.jpg",
     tags: ["Historique"],
     sector: "Secteur Centre",
     theme: "histoire",
@@ -105,6 +107,7 @@ const ADVENTURES: AdventureMeta[] = [
     file: "goutermagiquelac",
     emoji: "🧚",
     illustration: "🌸🧚✨",
+    photo: "/icons/fée.jpg",
     tags: ["Magie"],
     sector: "Secteur Lac",
     theme: "feerie",
@@ -113,6 +116,7 @@ const ADVENTURES: AdventureMeta[] = [
     file: "operationlisle",
     emoji: "🕵️",
     illustration: "🕵️🔐💻",
+    photo: "/icons/top_secret.jpg",
     tags: ["Espionnage"],
     sector: "Secteur Centre",
     theme: "espion",
@@ -401,12 +405,24 @@ function MissionCard({ data, meta, progress, distM, alwaysAccessible = false }: 
       <div className="h-44 flex items-center justify-center relative overflow-hidden"
         style={{ background: t.bannerGradient }}>
 
-        {/* Illustration SVG */}
-        <div className="relative z-10 transition-all duration-500">
-          {meta.theme === "histoire" && <IllustrationHistoire filter={bannerFilter} />}
-          {meta.theme === "feerie"   && <IllustrationFeerie   filter={bannerFilter} />}
-          {meta.theme === "espion"   && <IllustrationEspion   filter={bannerFilter} />}
-        </div>
+        {/* Photo ou illustration SVG */}
+        {meta.photo ? (
+          <>
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url('${meta.photo}')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              filter: bannerFilter,
+            }} />
+            <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${t.bannerGradient.includes("#0d") ? "rgba(13,17,23,0.55)" : "rgba(0,0,0,0.25)"} 0%, transparent 60%)` }} />
+          </>
+        ) : (
+          <div className="relative z-10 transition-all duration-500">
+            {meta.theme === "histoire" && <IllustrationHistoire filter={bannerFilter} />}
+            {meta.theme === "feerie"   && <IllustrationFeerie   filter={bannerFilter} />}
+            {meta.theme === "espion"   && <IllustrationEspion   filter={bannerFilter} />}
+          </div>
+        )}
 
         {/* LOCKED : overlay frosted glass + cadenas + distance */}
         {state === "locked" && (

@@ -164,10 +164,32 @@ export default function IntroScreen({ parcours, onStart }: IntroScreenProps) {
     ? haversineDistance(position, targetCoords)
     : null;
 
+  const photoMap: Record<string, string> = {
+    "islo-hist-710-001": "/icons/livres.jpg",
+    "islo-kids-lac-001": "/icons/fée.jpg",
+    "islo-spy-007":      "/icons/top_secret.jpg",
+  };
+  const photo = photoMap[parcours.id];
+
+  const overlayMap: Record<string, string> = {
+    "islo-hist-710-001": "rgba(120, 80, 20, 0.72)",
+    "islo-kids-lac-001": "rgba(160, 60, 160, 0.68)",
+    "islo-spy-007":      "rgba(5, 20, 5, 0.78)",
+  };
+  const overlay = overlayMap[parcours.id] ?? "rgba(0,0,0,0.65)";
+
   return (
-    <div className={`min-h-dvh flex flex-col ${t.pageBg} ${t.fontClass}`}>
+    <div className={`min-h-dvh flex flex-col ${t.fontClass} relative`}>
+      {/* Photo de fond */}
+      {photo && (
+        <>
+          <div className="absolute inset-0 z-0" style={{ backgroundImage: `url('${photo}')`, backgroundSize: "cover", backgroundPosition: "center" }} />
+          <div className="absolute inset-0 z-0" style={{ background: overlay }} />
+        </>
+      )}
+      {!photo && <div className={`absolute inset-0 z-0 ${t.pageBg}`} />}
       {/* Header */}
-      <div className="shrink-0 px-4 pt-3 pb-2 flex items-center gap-3">
+      <div className="relative z-10 shrink-0 px-4 pt-3 pb-2 flex items-center gap-3">
         <Link href="/" className={`${t.backColor} active:opacity-70 transition-opacity`}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
             <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
@@ -179,11 +201,11 @@ export default function IntroScreen({ parcours, onStart }: IntroScreenProps) {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto flex flex-col items-center px-6 pt-4 pb-6 gap-6">
+      <div className="relative z-10 flex-1 overflow-y-auto flex flex-col items-center px-6 pt-4 pb-6 gap-6">
         {/* Title */}
         <div className="text-center">
-          <p className={`text-xs uppercase tracking-widest mb-1 ${t.subtitleColor}`}>Point de départ</p>
-          <h2 className={`text-xl font-bold ${t.titleColor}`}>{pd.nom}</h2>
+          <p className={`text-xs uppercase tracking-widest mb-1 ${photo ? "text-white/60" : t.subtitleColor}`}>Point de départ</p>
+          <h2 className={`text-xl font-bold ${photo ? "text-white" : t.titleColor}`} style={{ textShadow: photo ? "0 2px 8px rgba(0,0,0,0.6)" : undefined }}>{pd.nom}</h2>
         </div>
 
         {/* Boussole */}
@@ -195,35 +217,27 @@ export default function IntroScreen({ parcours, onStart }: IntroScreenProps) {
         />
 
         {/* Welcome text */}
-        <p className={`text-sm leading-relaxed text-center max-w-xs ${t.storyText} ${t.storyBg} rounded-xl px-4 py-3 italic`}>
+        <p className={`text-sm leading-relaxed text-center max-w-xs rounded-xl px-4 py-3 italic ${photo ? "text-white/90 bg-black/30" : `${t.storyText} ${t.storyBg}`}`}>
           {pd.texte_bienvenue}
         </p>
 
         {/* Action instruction */}
-        <p className={`text-sm font-medium text-center ${t.questionText}`}>
+        <p className={`text-sm font-medium text-center ${photo ? "text-white/80" : t.questionText}`}>
           {pd.consigne_action}
         </p>
 
         {/* Info tags */}
         <div className="flex flex-wrap justify-center gap-2">
-          <span className={`text-[10px] px-2.5 py-1 rounded-full ${t.enigmeCardBg} border ${t.enigmeCardBorder} ${t.subtitleColor}`}>
-            {parcours.etapes.length} étapes
-          </span>
-          {parcours.temps_estime && (
-            <span className={`text-[10px] px-2.5 py-1 rounded-full ${t.enigmeCardBg} border ${t.enigmeCardBorder} ${t.subtitleColor}`}>
-              {parcours.temps_estime}
+          {[`${parcours.etapes.length} étapes`, parcours.temps_estime, parcours.age_conseille].filter(Boolean).map((tag) => (
+            <span key={tag} className={`text-[10px] px-2.5 py-1 rounded-full border ${photo ? "bg-white/15 border-white/30 text-white/80" : `${t.enigmeCardBg} ${t.enigmeCardBorder} ${t.subtitleColor}`}`}>
+              {tag}
             </span>
-          )}
-          {parcours.age_conseille && (
-            <span className={`text-[10px] px-2.5 py-1 rounded-full ${t.enigmeCardBg} border ${t.enigmeCardBorder} ${t.subtitleColor}`}>
-              {parcours.age_conseille}
-            </span>
-          )}
+          ))}
         </div>
       </div>
 
       {/* Start button */}
-      <div className="shrink-0 px-6 pb-8 pt-4">
+      <div className="relative z-10 shrink-0 px-6 pb-8 pt-4">
         <button
           onClick={onStart}
           className={`w-full ${t.submitBg} ${t.submitText} font-bold text-lg py-4 rounded-2xl shadow-lg active:scale-95 transition-transform`}
