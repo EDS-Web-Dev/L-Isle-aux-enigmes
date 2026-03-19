@@ -78,7 +78,7 @@ export default function EnigmeForm({ enigme, onCorrect }: EnigmeFormProps) {
       {/* Question */}
       <div className="flex items-start gap-2.5">
         <span className="text-lg shrink-0 mt-0.5">🔍</span>
-        <p className={`text-[15px] font-semibold leading-snug ${t.questionText}`}>
+        <p className={`text-base font-semibold leading-snug ${t.questionText}`}>
           {enigme.question}
         </p>
       </div>
@@ -98,7 +98,7 @@ export default function EnigmeForm({ enigme, onCorrect }: EnigmeFormProps) {
             <button
               key={opt}
               onClick={() => selectChoice(opt)}
-              className={`py-3.5 px-3 rounded-2xl text-sm font-semibold border-2 transition-all active:scale-95 text-center leading-snug ${
+              className={`py-4 px-3 rounded-2xl text-base font-semibold border-2 transition-all active:scale-95 text-center leading-snug ${
                 answer === opt && feedback === "error"
                   ? `${t.errorBorder} ${t.errorBg} ${t.errorText}`
                   : `${t.choiceBorder} ${t.choiceBg} ${t.choiceText}`
@@ -116,13 +116,13 @@ export default function EnigmeForm({ enigme, onCorrect }: EnigmeFormProps) {
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             placeholder={enigme.type === "NUMBER" ? "Entrez un nombre…" : "Votre réponse…"}
-            className={`w-full border-2 ${t.inputBorder} ${t.inputBg} ${t.inputText} rounded-2xl px-4 py-3.5 text-base
+            className={`w-full border-2 ${t.inputBorder} ${t.inputBg} ${t.inputText} rounded-2xl px-4 py-4 text-lg
               ${t.inputFocus} focus:outline-none transition-colors placeholder:opacity-40`}
           />
           <button
             type="submit"
             disabled={!answer.trim()}
-            className={`w-full ${t.submitBg} ${t.submitText} py-3.5 rounded-2xl font-bold text-sm
+            className={`w-full ${t.submitBg} ${t.submitText} py-4 rounded-2xl font-bold text-base
               disabled:opacity-40 active:scale-95 transition-all shadow-sm`}
           >
             Valider ma réponse
@@ -141,7 +141,7 @@ export default function EnigmeForm({ enigme, onCorrect }: EnigmeFormProps) {
             <span className="underline underline-offset-2">Besoin d&apos;un indice ?</span>
           </button>
         ) : (
-          <div className={`rounded-2xl px-4 py-3.5 text-sm leading-relaxed ${t.hintBg} ${t.hintText} flex gap-2.5`}>
+          <div className={`rounded-2xl px-4 py-3.5 text-base leading-relaxed ${t.hintBg} ${t.hintText} flex gap-2.5`}>
             <span className="shrink-0">{t.hintIcon}</span>
             <span>{enigme.indice}</span>
           </div>

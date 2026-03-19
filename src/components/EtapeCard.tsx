@@ -25,7 +25,7 @@ export default function EtapeCard({ etape, userPosition, onCorrect }: EtapeCardP
       {/* ── Header ─────────────────────────────────── */}
       <div className="px-5 pt-5 pb-4">
         <div className="flex items-start justify-between gap-3">
-          <h2 className={`text-lg font-bold leading-snug flex-1 ${t.titleColor}`}>
+          <h2 className={`text-xl font-bold leading-snug flex-1 ${t.titleColor}`}>
             {etape.nom}
           </h2>
 
@@ -45,7 +45,7 @@ export default function EtapeCard({ etape, userPosition, onCorrect }: EtapeCardP
           )}
         </div>
 
-        <p className={`text-xs mt-1.5 leading-relaxed font-medium ${t.subtitleColor}`}>
+        <p className={`text-sm mt-1.5 leading-relaxed font-medium ${t.subtitleColor}`}>
           {etape.instruction}
         </p>
       </div>
@@ -54,7 +54,7 @@ export default function EtapeCard({ etape, userPosition, onCorrect }: EtapeCardP
       <div className={`mx-4 mb-4 rounded-2xl px-4 py-3.5 ${t.storyBg}`}
         style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.1)" }}>
         <div className={`text-xl leading-none mb-1 opacity-40 ${t.storyText}`}>&ldquo;</div>
-        <p className={`text-sm italic leading-relaxed ${t.storyText}`}>
+        <p className={`text-base italic leading-relaxed ${t.storyText}`}>
           {etape.histoire}
         </p>
         <div className={`text-xl leading-none mt-1 text-right opacity-40 ${t.storyText}`}>&rdquo;</div>
@@ -71,7 +71,7 @@ export default function EtapeCard({ etape, userPosition, onCorrect }: EtapeCardP
           <div className="flex flex-col items-center py-6 gap-3 text-center">
             <span className="text-4xl">{t.lockedIcon}</span>
             <div>
-              <p className={`text-sm font-semibold ${t.lockedText}`}>
+              <p className={`text-base font-semibold ${t.lockedText}`}>
                 Rapproche-toi pour débloquer l&apos;énigme
               </p>
               {distance !== null && (
