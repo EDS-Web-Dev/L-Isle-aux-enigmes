@@ -109,12 +109,19 @@ const ADVENTURES: AdventureMeta[] = [
     sector: "Secteur Lac",
     theme: "feerie",
   },
+  {
+    file: "operationlisle",
+    emoji: "🕵️",
+    illustration: "🕵️🔐💻",
+    tags: ["Espionnage"],
+    sector: "Secteur Centre",
+    theme: "espion",
+  },
 ];
 
 const COMING_SOON: ComingSoonItem[] = [
   { emoji: "🗿",   titre: "Le Totem Perdu du Lac",       sector: "Secteur Lac",    tags: ["Famille"],    lat: 43.610, lng: 1.072 },
   { emoji: "🔔",   titre: "Maître Campanaire",            sector: "Secteur Centre", tags: ["Historique"], lat: 43.616, lng: 1.083 },
-  { emoji: "🕵️",  titre: "Opération L.I.S.L.E.",         sector: "Secteur Centre", tags: ["Espionnage"], lat: 43.617, lng: 1.081 },
   { emoji: "🛰️",  titre: "Opération L.I.S.L.E. : Lac",  sector: "Secteur Lac",    tags: ["Espionnage"], lat: 43.609, lng: 1.071 },
   { emoji: "🏴‍☠️", titre: "Le Trésor du Capitaine Save", sector: "Secteur Port",   tags: ["Aventure"],   lat: 43.611, lng: 1.069 },
   { emoji: "🦎",   titre: "Les Gardiens du Lac",          sector: "Secteur Lac",    tags: ["Nature"],     lat: 43.608, lng: 1.073 },
@@ -163,64 +170,99 @@ function Compass({ heading, targetBearing, targetEmoji }: {
     : null;
 
   return (
-    <div className="flex flex-col items-center gap-2 py-4">
-      <div className="relative" style={{ width: 200, height: 200 }}>
-        <div className="absolute inset-0 rounded-full animate-pulse pointer-events-none"
-          style={{ boxShadow: "0 0 40px 10px rgba(242,212,121,0.15)" }} />
-        <div className="absolute inset-0 rounded-full"
-          style={{ background: "radial-gradient(circle at center, #2a1208 60%, #1a0a05 100%)", border: "3px solid rgba(242,212,121,0.35)" }} />
-        {Array.from({ length: 36 }).map((_, i) => (
-          <div key={i} className="absolute"
-            style={{
-              top: "50%", left: "50%",
-              width: i % 9 === 0 ? 3 : 1.5,
-              height: i % 9 === 0 ? 10 : 6,
-              background: i % 9 === 0 ? "#F2D479" : "rgba(242,212,121,0.3)",
-              borderRadius: 2,
-              transform: `rotate(${i * 10}deg) translate(-50%, -92px)`,
-              transformOrigin: "top center",
-            }} />
+    <div className="flex flex-col items-center gap-3 py-4">
+      <div className="relative" style={{ width: 220, height: 220 }}>
+
+        {/* Anneau extérieur laiton */}
+        <div className="absolute inset-0 rounded-full" style={{
+          background: "linear-gradient(135deg, #d4a820 0%, #8B6914 30%, #c9991a 55%, #6b4e10 80%, #d4a820 100%)",
+          boxShadow: "0 6px 24px rgba(0,0,0,0.55), inset 0 2px 6px rgba(255,220,80,0.25)",
+        }} />
+
+        {/* Face parchemin */}
+        <div className="absolute rounded-full" style={{
+          inset: 10,
+          background: "radial-gradient(circle at 38% 32%, #f2dfa0 0%, #d8b96a 55%, #a87830 100%)",
+          boxShadow: "inset 0 3px 10px rgba(0,0,0,0.3)",
+          border: "2px solid #7a5a10",
+        }} />
+
+        {/* Graduations */}
+        {Array.from({ length: 72 }).map((_, i) => (
+          <div key={i} className="absolute" style={{
+            top: "50%", left: "50%",
+            width: i % 18 === 0 ? 3 : i % 6 === 0 ? 2 : 1,
+            height: i % 18 === 0 ? 14 : i % 6 === 0 ? 9 : 5,
+            background: i % 18 === 0 ? "#3d1a00" : "rgba(61,26,0,0.45)",
+            borderRadius: 1,
+            transform: `rotate(${i * 5}deg) translate(-50%, -98px)`,
+            transformOrigin: "top center",
+          }} />
         ))}
-        {/* Rose des vents */}
-        <div className="absolute inset-0"
-          style={{ transform: `rotate(${rotation}deg)`, transition: "transform 0.25s ease-out" }}>
-          <div className="absolute left-1/2 top-1/2" style={{ width: 6, height: 72, marginLeft: -3, marginTop: -72, background: "linear-gradient(to top, #C44A3A, #ff7a6a)", borderRadius: "3px 3px 0 0", boxShadow: "0 0 8px rgba(196,74,58,0.6)" }} />
-          <div className="absolute left-1/2 top-1/2" style={{ width: 6, height: 56, marginLeft: -3, background: "linear-gradient(to bottom, #D97A2B, rgba(217,122,43,0.2))", borderRadius: "0 0 3px 3px" }} />
-          <div className="absolute font-black text-sm" style={{ top: 14, left: "50%", transform: "translateX(-50%)", color: "#C44A3A", textShadow: "0 0 8px rgba(196,74,58,0.8)" }}>N</div>
-          <div className="absolute font-bold text-xs" style={{ bottom: 14, left: "50%", transform: "translateX(-50%)", color: "rgba(242,212,121,0.5)" }}>S</div>
-          <div className="absolute font-bold text-xs" style={{ right: 14, top: "50%", transform: "translateY(-50%)", color: "rgba(242,212,121,0.5)" }}>E</div>
-          <div className="absolute font-bold text-xs" style={{ left: 14, top: "50%", transform: "translateY(-50%)", color: "rgba(242,212,121,0.5)" }}>O</div>
+
+        {/* Rose des vents (tourne) */}
+        <div className="absolute inset-0" style={{ transform: `rotate(${rotation}deg)`, transition: "transform 0.25s ease-out" }}>
+
+          {/* Lettres cardinales */}
+          {[
+            { label: "N", style: { top: 22, left: "50%", transform: "translateX(-50%)", color: "#8B1010", fontSize: 17, fontWeight: 900, fontFamily: "Georgia, serif" } },
+            { label: "S", style: { bottom: 22, left: "50%", transform: "translateX(-50%)", color: "#3d1a00", fontSize: 13, fontWeight: 700, fontFamily: "Georgia, serif", opacity: 0.75 } },
+            { label: "E", style: { right: 20, top: "50%", transform: "translateY(-50%)", color: "#3d1a00", fontSize: 13, fontWeight: 700, fontFamily: "Georgia, serif", opacity: 0.75 } },
+            { label: "O", style: { left: 20, top: "50%", transform: "translateY(-50%)", color: "#3d1a00", fontSize: 13, fontWeight: 700, fontFamily: "Georgia, serif", opacity: 0.75 } },
+          ].map(({ label, style }) => (
+            <div key={label} className="absolute" style={style}>{label}</div>
+          ))}
+
+          {/* Aiguille Nord — losange rouge */}
+          <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -7, marginTop: -72 }}>
+            <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "64px solid #C44A3A", filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.35))" }} />
+          </div>
+          {/* Aiguille Sud — losange parchemin foncé */}
+          <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -6, marginTop: 6 }}>
+            <div style={{ width: 0, height: 0, borderLeft: "6px solid transparent", borderRight: "6px solid transparent", borderTop: "52px solid #7a5010", filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.25))" }} />
+          </div>
         </div>
-        {/* Aiguille cible (verte) */}
+
+        {/* Aiguille cible (mission) */}
         {targetRotation !== null && (
           <div className="absolute inset-0" style={{ transform: `rotate(${targetRotation}deg)`, transition: "transform 0.3s ease-out" }}>
-            <div className="absolute left-1/2 top-1/2" style={{ width: 4, height: 80, marginLeft: -2, marginTop: -80, background: "linear-gradient(to top, #6FAF4F, #a8e07a)", borderRadius: "2px 2px 0 0", boxShadow: "0 0 10px rgba(111,175,79,0.8)" }} />
-            <div className="absolute left-1/2" style={{ top: "calc(50% - 84px)", transform: "translateX(-50%)" }}>
-              <div style={{ width: 0, height: 0, borderLeft: "6px solid transparent", borderRight: "6px solid transparent", borderBottom: "10px solid #a8e07a", filter: "drop-shadow(0 0 4px #6FAF4F)" }} />
+            <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -4, marginTop: -80 }}>
+              <div style={{ width: 0, height: 0, borderLeft: "4px solid transparent", borderRight: "4px solid transparent", borderBottom: "70px solid rgba(111,175,79,0.92)", filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))" }} />
             </div>
             {targetEmoji && (
-              <div className="absolute left-1/2" style={{ top: "calc(50% - 108px)", transform: "translateX(-50%)", fontSize: 16 }}>{targetEmoji}</div>
+              <div className="absolute left-1/2" style={{ top: "calc(50% - 96px)", transform: "translateX(-50%)", fontSize: 15 }}>{targetEmoji}</div>
             )}
           </div>
         )}
-        <div className="absolute top-1/2 left-1/2 rounded-full z-10" style={{ width: 14, height: 14, marginTop: -7, marginLeft: -7, background: "#F2D479", boxShadow: "0 0 10px #F2D479" }} />
-        <div className="absolute left-1/2" style={{ top: -2, transform: "translateX(-50%)" }}>
-          <div style={{ width: 0, height: 0, borderLeft: "6px solid transparent", borderRight: "6px solid transparent", borderBottom: "12px solid #F2D479", filter: "drop-shadow(0 0 6px #F2D479)" }} />
+
+        {/* Rivet central laiton */}
+        <div className="absolute top-1/2 left-1/2 rounded-full z-10" style={{
+          width: 16, height: 16, marginTop: -8, marginLeft: -8,
+          background: "radial-gradient(circle at 35% 30%, #f0d060, #8B6914)",
+          boxShadow: "0 2px 5px rgba(0,0,0,0.5)",
+          border: "1.5px solid #5a3a08",
+        }} />
+
+        {/* Triangle repère en haut */}
+        <div className="absolute left-1/2" style={{ top: 4, transform: "translateX(-50%)" }}>
+          <div style={{ width: 0, height: 0, borderLeft: "5px solid transparent", borderRight: "5px solid transparent", borderBottom: "10px solid #c9991a" }} />
         </div>
       </div>
+
+      {/* Affichage cap */}
       <div className="text-center space-y-1">
         {heading !== null ? (
           <>
             <div>
-              <span className="text-2xl font-black" style={{ color: "#F2D479" }}>{headingToLabel(heading)}</span>
-              <span className="text-sm font-bold ml-2" style={{ color: "rgba(242,212,121,0.6)" }}>{Math.round(heading)}°</span>
+              <span className="text-2xl font-black" style={{ color: "#F2D479", fontFamily: "Georgia, serif" }}>{headingToLabel(heading)}</span>
+              <span className="text-sm font-bold ml-2" style={{ color: "rgba(242,212,121,0.65)" }}>{Math.round(heading)}°</span>
             </div>
             {targetBearing !== null && (
               <p className="text-[10px] font-semibold" style={{ color: "#6FAF4F" }}>🎯 Mission à {Math.round(targetBearing)}°</p>
             )}
           </>
         ) : (
-          <span className="text-sm animate-pulse" style={{ color: "rgba(242,212,121,0.5)" }}>Calibrage…</span>
+          <span className="text-sm animate-pulse" style={{ color: "rgba(242,212,121,0.5)", fontFamily: "Georgia, serif" }}>Calibrage…</span>
         )}
       </div>
     </div>
@@ -602,11 +644,22 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Boussole — toujours visible */}
+        <div className="rounded-3xl mb-6 py-2"
+          style={{ background: "rgba(61,26,16,0.6)", border: "1px solid rgba(242,212,121,0.2)" }}>
+          <p className="text-center text-[10px] font-bold uppercase tracking-widest pt-3"
+            style={{ color: "rgba(242,212,121,0.5)" }}>Direction du téléphone</p>
+          <Compass heading={heading} targetBearing={targetBearing} targetEmoji={nearestAvailable?.emoji} />
+          <p className="text-center text-[10px] pb-3" style={{ color: "rgba(242,212,121,0.4)" }}>
+            📳 Vibration à moins de 20 m d&apos;une mission
+          </p>
+        </div>
+
         {geoStatus === "idle" && (
           <button onClick={requestGeo}
-            className="w-full py-4 rounded-2xl font-extrabold text-sm flex items-center justify-center gap-3 shadow-lg active:scale-[0.98] transition-transform"
+            className="w-full py-4 rounded-2xl font-extrabold text-sm flex flex-col items-center justify-center gap-1 shadow-lg active:scale-[0.98] transition-transform"
             style={{ background: "#F2D479", color: "#C44A3A" }}>
-            <span className="text-xl">🧭</span> Activer la localisation & boussole
+            <span className="text-center">Activer la localisation pour utiliser la boussole</span>
           </button>
         )}
         {geoStatus === "loading" && (
@@ -624,16 +677,6 @@ export default function Home() {
         )}
         {geoStatus === "ok" && (
           <>
-            <div className="rounded-3xl mb-6 py-2"
-              style={{ background: "rgba(61,26,16,0.6)", border: "1px solid rgba(242,212,121,0.2)" }}>
-              <p className="text-center text-[10px] font-bold uppercase tracking-widest pt-3"
-                style={{ color: "rgba(242,212,121,0.5)" }}>Direction du téléphone</p>
-              <Compass heading={heading} targetBearing={targetBearing} targetEmoji={nearestAvailable?.emoji} />
-              <p className="text-center text-[10px] pb-3" style={{ color: "rgba(242,212,121,0.4)" }}>
-                📳 Vibration à moins de 20 m d&apos;une mission
-              </p>
-            </div>
-
             {/* ── Debug position ── }
             {userPos && (
               <div className="rounded-2xl px-4 py-3 mb-4 space-y-1"
