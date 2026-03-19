@@ -1,0 +1,90 @@
+{
+  "id": "islo-kids-lac-001",
+  "version": "1.0",
+  "titre": "Le Goûter Magique des Fées",
+  "description": "Retrouvez les ingrédients du goûter cachés par le Petit Monstre au bord du lac.",
+  "ville": "L'Isle-Jourdain",
+  "difficulty": 1,
+  "age_conseille": "3-6 ans",
+  "temps_estime": "30 min",
+  "config": {
+    "unite_distance": "metres",
+    "precision_gps_requise": 20,
+    "theme_color": "#9B59B6"
+  },
+  "point_depart": {
+    "nom": "Capitainerie (Office de Tourisme)",
+    "coords": { "lat": 43.615211, "lng": 1.074095 },
+    "texte_bienvenue": "Coucou les petits lutins ! Je suis la Fée Islo. Le petit monstre a caché mes gâteaux magiques autour du lac. Prêts pour une chasse aux trésors ?",
+    "consigne_action": "Regardez le grand panneau bleu avec la carte du lac juste devant vous."
+  },
+  "etapes": [
+    {
+      "id": "couleur-eau",
+      "nom": "La Peinture du Monstre",
+      "instruction": "Regardez le dessin du lac sur le panneau.",
+      "coords": { "lat": 43.615211, "lng": 1.074095 },
+      "validation_radius": 15,
+      "histoire": "Le monstre a voulu peindre le lac ! De quelle couleur est l'eau sur le dessin ?",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "L'eau sur le dessin est-elle...",
+        "options": ["Rouge", "Bleue", "Verte"],
+        "reponse": "Bleue",
+        "indice": "C'est la couleur du ciel !",
+        "message_succes": "Bravo ! On a retrouvé le sirop de bleuets."
+      }
+    },
+    {
+      "id": "pont-bois",
+      "nom": "Le Pont des Lutins",
+      "instruction": "Suivez le chemin vers le petit pont en bois.",
+      "coords": { "lat": 43.61580, "lng": 1.07880 },
+      "validation_radius": 15,
+      "histoire": "Traversez le pont sans réveiller le monstre qui dort dessous !",
+      "enigme": {
+        "type": "NUMBER",
+        "question": "Combien de grosses barres de bois touchent le sol quand vous marchez sur le pont ? (Elles sont allongées sous vos pieds)",
+        "reponse": "3",
+        "indice": "Comptez avec papa ou maman : 1, 2... et 3 !",
+        "message_succes": "Super ! Vous n'avez pas fait de bruit."
+      }
+    },
+    {
+      "id": "skate-bosses",
+      "nom": "Le Dos du Monstre",
+      "instruction": "Regardez le Skatepark (la zone avec les bosses).",
+      "coords": { "lat": 43.61825, "lng": 1.07375 },
+      "validation_radius": 25,
+      "histoire": "On dirait le dos d'un énorme dinosaure gris !",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "De quelle couleur sont les grosses bosses du skatepark ?",
+        "options": ["Jaunes", "Grises", "Roses"],
+        "reponse": "Grises",
+        "indice": "C'est la couleur d'un éléphant.",
+        "message_succes": "Gagné ! On a retrouvé les gâteaux."
+      }
+    },
+    {
+      "id": "palais-final",
+      "nom": "Le Palais de la Fée",
+      "instruction": "Allez vite vers l'Aire de Jeux (les balançoires et les toboggans).",
+      "coords": { "lat": 43.61550, "lng": 1.08050 },
+      "validation_radius": 30,
+      "histoire": "C'est ici que les fées habitent ! Cherchez le plus grand toboggan.",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "De quelle couleur est le grand toboggan (ou la structure principale) ?",
+        "reponse": "Jaune",
+        "indice": "C'est la couleur du soleil.",
+        "message_succes": "VICTOIRE ! Le goûter peut commencer au pied du toboggan !"
+      }
+    }
+  ],
+  "final": {
+    "titre": "Diplôme de Petit Elfe",
+    "message": "Tu as été fantastique ! Le Petit Monstre est devenu ton ami. Tu as bien mérité un tour de toboggan !",
+    "code_validation": "GOUTER-OK"
+  }
+}

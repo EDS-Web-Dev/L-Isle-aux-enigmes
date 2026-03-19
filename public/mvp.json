@@ -1,0 +1,77 @@
+{
+    "id": "islo-mvp-001",
+    "version": "1.0",
+    "titre": "Le Totem Perdu du Lac",
+    "description": "Une aventure d'initiation autour du lac pour les apprentis explorateurs.",
+    "ville": "L'Isle-Jourdain",
+    "difficulty": 1,
+    "age_conseille": "6-9 ans",
+    "config": {
+      "unite_distance": "metres",
+      "precision_gps_requise": 20,
+      "theme_color": "#2ecc71"
+    },
+    "etapes": [
+      {
+        "id": "start",
+        "nom": "Le Point de Départ",
+        "instruction": "Rendez-vous sur l'esplanade devant l'Office de Tourisme (la capitainerie).",
+        "coords": {
+          "lat": 43.61528,
+          "lng": 1.07865
+        },
+        "validation_radius": 30,
+        "histoire": "Bienvenue aventurier ! Avant de partir, prouve que tu es attentif aux détails.",
+        "enigme": {
+          "type": "TEXT",
+          "question": "Quel est le nom de la rivière qui alimente notre beau lac ? (Regarde les panneaux autour de toi)",
+          "reponse": ["Save", "La Save"],
+          "indice": "C'est un nom très court en 4 lettres.",
+          "message_succes": "Exact ! C'est la Save qui nous donne cette eau précieuse."
+        }
+      },
+      {
+        "id": "ponton",
+        "nom": "Le Ponton de Bois",
+        "instruction": "Suis le chemin qui longe l'eau vers la droite jusqu'au grand ponton.",
+        "coords": {
+          "lat": 43.61595,
+          "lng": 1.07990
+        },
+        "validation_radius": 15,
+        "histoire": "Ici, les pêcheurs racontent avoir vu passer une ombre géante sous les planches...",
+        "enigme": {
+          "type": "NUMBER",
+          "question": "Compte les poteaux en bois qui soutiennent la barrière à l'entrée du ponton. Combien y en a-t-il ?",
+          "reponse": "6",
+          "indice": "Ne compte que ceux qui touchent le sol à l'entrée gauche.",
+          "message_succes": "Bien compté ! Tu as débloqué le deuxième symbole."
+        }
+      },
+      {
+        "id": "skatepark",
+        "nom": "Le Virage des Roulettes",
+        "instruction": "Continue ta balade jusqu'à apercevoir les rampes du Skatepark.",
+        "coords": {
+          "lat": 43.61710,
+          "lng": 1.08250
+        },
+        "validation_radius": 25,
+        "histoire": "Même les esprits du lac aiment faire du sport ! Regarde bien les couleurs autour de toi.",
+        "enigme": {
+          "type": "CHOICE",
+          "question": "Quelle est la couleur principale de la rampe la plus haute ?",
+          "options": ["Rouge", "Bleu", "Gris", "Jaune"],
+          "reponse": "Gris",
+          "indice": "C'est la couleur du métal ou du béton.",
+          "message_succes": "Bravo ! Le totem est presque complet."
+        }
+      }
+    ],
+    "final": {
+      "titre": "Félicitations Explorateur !",
+      "message": "Tu as réveillé l'esprit du lac ! Pour fêter ça, montre cet écran au stand de gaufres pour une surprise.",
+      "code_validation": "ISLO-Gagnant-2026",
+      "image_fin": "/assets/victoire.png"
+    }
+  }

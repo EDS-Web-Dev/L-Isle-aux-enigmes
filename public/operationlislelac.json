@@ -1,0 +1,123 @@
+{
+    "id": "islo-spy-lac-001",
+    "version": "1.2",
+    "titre": "Opération L.I.S.L.E. : Alerte au Lac",
+    "description": "Localisez et désactivez le serveur pirate immergé qui brouille les ondes de la ville.",
+    "ville": "L'Isle-Jourdain",
+    "difficulty": 4,
+    "age_conseille": "10-12 ans",
+    "temps_estime": "50 min",
+    "config": {
+      "unite_distance": "metres",
+      "precision_gps_requise": 15,
+      "theme_color": "#00ff41"
+    },
+    "point_depart": {
+      "nom": "Capitainerie (Office de Tourisme du Lac)",
+      "coords": {
+        "lat": 43.61554,
+        "lng": 1.07360
+      },
+      "texte_bienvenue": "Recrues, ici le QG. Nous avons localisé une source de brouillage magnétique qui émane des eaux du lac. Ce point stratégique est votre base d'opérations. Vous devez faire le tour du périmètre pour identifier les antennes relais camouflées par les hackers. Regardez bien autour de vous, chaque détail compte.",
+      "consigne_action": "Rendez-vous devant le grand panneau d'affichage de l'Office de Tourisme pour initialiser la mission."
+    },
+    "etapes": [
+      {
+        "id": "scan",
+        "nom": "Scan du Périmètre",
+        "instruction": "Analysez le grand plan du lac situé sur le mur de la Capitainerie.",
+        "coords": {
+          "lat": 43.61554,
+          "lng": 1.07360
+        },
+        "validation_radius": 15,
+        "histoire": "Les hackers ont laissé une coordonnée cryptée directement sur la carte officielle.",
+        "enigme": {
+          "type": "TEXT",
+          "question": "Regardez la légende du plan. Quel est le numéro associé à l'activité 'Ski Nautique' ?",
+          "reponse": "3",
+          "indice": "Cherchez le petit icône de skieur bleu dans la liste numérotée.",
+          "message_succes": "ID de session validé. Le système reconnaît votre accès."
+        }
+      },
+      {
+        "id": "skate",
+        "nom": "Calcul de Puissance",
+        "instruction": "Suivez le chemin vers le sud-est pour rejoindre le Skatepark.",
+        "coords": {
+          "lat": 43.61823,
+          "lng": 1.07364
+        },
+        "validation_radius": 20,
+        "histoire": "Le métal des rampes sert de réflecteur pour amplifier le signal pirate. Nous devons calculer l'énergie déployée.",
+        "enigme": {
+          "type": "NUMBER",
+          "question": "Comptez le nombre de rampes de couleur grise au skatepark. Multipliez ce chiffre par le nombre de bancs publics situés juste à côté du skatepark.",
+          "reponse": "12",
+          "indice": "Il y a 6 rampes grises et 2 bancs en bois. Faites le calcul : 6 x 2.",
+          "message_succes": "Puissance de 12 MHz identifiée. Signal triangulé !"
+        }
+      },
+      {
+        "id": "fitness",
+        "nom": "Interception de Données",
+        "instruction": "Continuez le tour du lac vers les appareils de fitness en bois.",
+        "coords": {
+          "lat": 43.61845,
+          "lng": 1.08055
+        },
+        "validation_radius": 20,
+        "histoire": "Un micro-émetteur a été intercepté sur le panneau d'exercice 'Saut de Haie'.",
+        "enigme": {
+          "type": "TEXT",
+          "question": "Sur ce panneau, quel est le 3ème mot écrit dans la première ligne de la consigne de sécurité ?",
+          "reponse": "Pieds",
+          "indice": "Lisez attentivement le texte écrit en haut du panneau.",
+          "message_succes": "Mot de passe partiel récupéré. Vous progressez vite, agents."
+        }
+      },
+      {
+        "id": "pont",
+        "nom": "Sécurité Système",
+        "instruction": "Traversez le petit pont métallique au bout du lac.",
+        "coords": {
+          "lat": 43.61775,
+          "lng": 1.07815
+        },
+        "validation_radius": 15,
+        "histoire": "Le pont sert d'antenne géante. Trouvez la clé de verrouillage gravée dans le métal.",
+        "enigme": {
+          "type": "NUMBER",
+          "question": "Regardez la plaque de fer au sol juste à l'entrée du pont. Comptez les gros boulons qui la fixent. Divisez ce nombre par 2.",
+          "reponse": "4",
+          "indice": "Il y a 8 boulons au total. 8 divisé par 2 = ?",
+          "message_succes": "Accès autorisé. Le système de brouillage commence à faiblir."
+        }
+      },
+      {
+        "id": "final",
+        "nom": "Désactivation Totale",
+        "instruction": "Revenez vers la zone de départ en passant par le grand Totem en bois sur la digue.",
+        "coords": {
+          "lat": 43.61585,
+          "lng": 1.07755
+        },
+        "validation_radius": 30,
+        "histoire": "C'est ici. L'antenne finale est camouflée tout en haut de ce totem. Entrez le mot de passe final pour tout couper !",
+        "enigme": {
+          "type": "TEXT",
+          "question": "Le mot de passe final est le nom de l'oiseau sculpté au sommet du totem.",
+          "reponse": "Héron",
+          "indice": "C'est un grand oiseau majestueux avec un long bec.",
+          "message_succes": "SYSTÈME NEUTRALISÉ. Le signal pirate est coupé. Bien joué, agents."
+        }
+      }
+    ],
+    "final": {
+      "titre": "Mission Terminée : Niveau 10",
+      "message": "Le réseau mobile de l'Isle-Jourdain est rétabli. L'Agence L.I.S.L.E. vous remercie pour votre bravoure.",
+      "recompense": "Badge Agent d'Élite du Lac débloqué 🕵️‍♂️",
+      "code_validation": "AGENT-LAC-ISLO"
+    }
+  }
+  

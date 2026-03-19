@@ -1,0 +1,125 @@
+{
+    "id": "islo-hist-002",
+    "version": "1.0",
+    "titre": "Le Code Secret du Maître Campanaire",
+    "description": "Une enquête historique dans le cœur battant de l'Isle-Jourdain. Observation et logique seront vos meilleures alliées.",
+    "ville": "L'Isle-Jourdain",
+    "difficulty": 3,
+    "age_conseille": "10-12 ans",
+    "temps_estime": "50-60 min",
+    "config": {
+      "unite_distance": "metres",
+      "precision_gps_requise": 15,
+      "theme_color": "#8e44ad"
+    },
+
+    "point_depart": {
+        "nom": "Parvis de la Collégiale Saint-Martin",
+        "coords": {
+          "lat": 43.61285,
+          "lng": 1.08275
+        },
+        "texte_bienvenue": "Bienvenue en 1850 ! Vous vous tenez devant le monument le plus imposant de la ville...",
+        "image_intro": "/assets/images/collegiale_start.jpg",
+        "consigne_action": "Rendez-vous devant les deux grandes tours pour commencer."
+      },
+      
+    "etapes": [
+      {
+        "id": "collegiale",
+        "nom": "Les Tours de Saint-Martin",
+        "instruction": "Rendez-vous sur le parvis de la Collégiale, face aux deux grandes tours.",
+        "coords": {
+          "lat": 43.61285,
+          "lng": 1.08275
+        },
+        "validation_radius": 20,
+        "histoire": "Le Maître Campanaire surveillait toujours le temps. Regardez bien la tour de gauche (celle avec l'horloge) et la tour de droite.",
+        "enigme": {
+          "type": "NUMBER",
+          "question": "Quel nombre obtient on quand on multiplie le nombien de chiffres romains 'X' sur le cadran de l'horloge par le nombre de cloches visibles dans les arches de la tour de droite ?",
+          "reponse": "12",
+          "indice": "Il y a 4 chiffres 'X' sur l'horloge (IX, X, XI, XII) et 3 cloches visibles à droite. 4 x 3 = ?",
+          "message_succes": "Excellent calcul ! Le premier chiffre du code secret est le 12."
+        }
+      },
+      {
+        "id": "musee",
+        "nom": "L'Ancien Hôtel de Ville",
+        "instruction": "Dirigez-vous vers l'entrée du Musée Européen d'Art Campanaire.",
+        "coords": {
+          "lat": 43.61245,
+          "lng": 1.08345
+        },
+        "validation_radius": 15,
+        "histoire": "Ce bâtiment majestueux cache une date importante gravée au-dessus d'une porte ou sur une plaque.",
+        "enigme": {
+          "type": "TEXT",
+          "question": "Trouvez l'année de construction indiquée (1860). Additionnez tous ses chiffres (1+8+6+0). Le résultat correspond à la place d'une lettre dans l'alphabet (A=1, B=2...). Quelle est cette lettre ?",
+          "reponse": "O",
+          "indice": "Le total fait 15. Compte dans l'alphabet : J est 10, K est 11...",
+          "message_succes": "Bravo ! Le 'O' est la clé pour la suite de l'aventure."
+        }
+      },
+      {
+        "id": "halles",
+        "nom": "Sous les Halles",
+        "instruction": "Mettez-vous à l'abri sous les grandes Halles de la place.",
+        "coords": {
+          "lat": 43.61225,
+          "lng": 1.08330
+        },
+        "validation_radius": 15,
+        "histoire": "Les marchands utilisaient ces piliers pour s'organiser. La géométrie était leur secret.",
+        "enigme": {
+          "type": "NUMBER",
+          "question": "Comptez le nombre total de piliers qui soutiennent le toit des Halles. Divisez ce nombre par 4. Quel chiffre obtenez-vous ?",
+          "reponse": "3",
+          "indice": "Il y a 12 piliers au total. 12 partagé en 4 groupes, cela fait combien ?",
+          "message_succes": "Le chiffre 3 est validé ! Vous approchez du but."
+        }
+      },
+      {
+        "id": "pont",
+        "nom": "Le Passage sur la Save",
+        "instruction": "Descendez la rue de la République jusqu'au petit pont qui enjambe la rivière.",
+        "coords": {
+          "lat": 43.61105,
+          "lng": 1.08450
+        },
+        "validation_radius": 20,
+        "histoire": "Le Maître fondeur aimait les devinettes. En voici une pour vous !",
+        "enigme": {
+          "type": "TEXT",
+          "question": "Je traverse la ville sans bouger. J'ai deux bras (mes rampes) mais pas de mains. Je porte les gens mais je n'ai pas de dos. Qui suis-je ?",
+          "reponse": "Pont",
+          "indice": "Regarde sous tes pieds, tu es dessus !",
+          "message_succes": "Exactement ! Traverse-moi pour l'étape finale."
+        }
+      },
+      {
+        "id": "viaduc",
+        "nom": "Le Secret du Viaduc",
+        "instruction": "Marchez vers le grand Viaduc de briques, là où commence la voie verte.",
+        "coords": {
+          "lat": 43.61055,
+          "lng": 1.08720
+        },
+        "validation_radius": 30,
+        "histoire": "C'est ici que le Maître Campanaire a caché son héritage.",
+        "enigme": {
+          "type": "NUMBER",
+          "question": "Depuis ce point, comptez les grandes arches du viaduc que vous voyez. Multipliez ce nombre par le chiffre 3 trouvé aux Halles.",
+          "reponse": "18",
+          "indice": "Il y a 6 arches visibles. 6 x 3 = ?",
+          "message_succes": "CODE FINAL CORRECT ! Vous avez retrouvé l'héritage !"
+        }
+      }
+    ],
+    "final": {
+      "titre": "Héritiers du Savoir !",
+      "message": "Vous avez déchiffré le code du Maître Campanaire. Vous connaissez maintenant l'Isle-Jourdain mieux que quiconque. Présentez ce badge de réussite au partenaire de votre choix !",
+      "recompense": "Badge de l'Expert Campanaire Débloqué 🏆",
+      "code_validation": "CAMPANA-2026"
+    }
+  }
