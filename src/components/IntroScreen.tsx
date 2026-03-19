@@ -70,20 +70,20 @@ function IntroCompass({ heading, targetBearing, distM, themeId }: {
         {/* Rose (tourne avec le téléphone) */}
         <div className="absolute inset-0" style={{ transform: `rotate(${rotation}deg)`, transition: "transform 0.25s ease-out" }}>
           {[
-            { label: "N", style: { top: 20, left: "50%", transform: "translateX(-50%)", color: c.northColor, fontSize: 16, fontWeight: 900, fontFamily: "Georgia, serif" } },
-            { label: "S", style: { bottom: 20, left: "50%", transform: "translateX(-50%)", color: c.cardinalColor, fontSize: 12, fontWeight: 700, fontFamily: "Georgia, serif", opacity: 0.7 } },
-            { label: "E", style: { right: 18, top: "50%", transform: "translateY(-50%)", color: c.cardinalColor, fontSize: 12, fontWeight: 700, fontFamily: "Georgia, serif", opacity: 0.7 } },
-            { label: "O", style: { left: 18, top: "50%", transform: "translateY(-50%)", color: c.cardinalColor, fontSize: 12, fontWeight: 700, fontFamily: "Georgia, serif", opacity: 0.7 } },
+            { label: "N", style: { top: 24, left: "50%", transform: "translateX(-50%)", color: c.northColor, fontSize: 16, fontWeight: 900, fontFamily: "Georgia, serif", zIndex: 10, textShadow: `0 0 6px rgba(242,212,121,0.8), 0 1px 3px rgba(0,0,0,0.4)` } },
+            { label: "S", style: { bottom: 24, left: "51%", transform: "translateX(-50%)", color: c.cardinalColor, fontSize: 12, fontWeight: 700, fontFamily: "Georgia, serif", zIndex: 10, textShadow: `0 0 5px rgba(242,212,121,0.7)` } },
+            { label: "E", style: { right: 34, top: "50%", transform: "translateY(-50%)", color: c.cardinalColor, fontSize: 12, fontWeight: 700, fontFamily: "Georgia, serif", zIndex: 10, textShadow: `0 0 5px rgba(242,212,121,0.7)` } },
+            { label: "O", style: { left: 34, top: "50%", transform: "translateY(-50%)", color: c.cardinalColor, fontSize: 12, fontWeight: 700, fontFamily: "Georgia, serif", zIndex: 10, textShadow: `0 0 5px rgba(242,212,121,0.7)` } },
           ].map(({ label, style }) => (
             <div key={label} className="absolute" style={style}>{label}</div>
           ))}
           {/* Aiguille N */}
-          <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -6, marginTop: -62 }}>
-            <div style={{ width: 0, height: 0, borderLeft: "6px solid transparent", borderRight: "6px solid transparent", borderBottom: `56px solid ${c.northColor}`, filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.3))" }} />
+          <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -6, marginTop: -55 }}>
+            <div style={{ width: 0, height: 0, borderLeft: "6px solid transparent", borderRight: "6px solid transparent", borderBottom: `48px solid ${c.northColor}`, filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.3))" }} />
           </div>
           {/* Aiguille S */}
-          <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -5, marginTop: 5 }}>
-            <div style={{ width: 0, height: 0, borderLeft: "5px solid transparent", borderRight: "5px solid transparent", borderTop: `46px solid ${c.southColor}`, filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.2))" }} />
+          <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -6, marginTop: 7 }}>
+            <div style={{ width: 0, height: 0, borderLeft: "6px solid transparent", borderRight: "6px solid transparent", borderTop: `48px solid ${c.southColor}`, filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.2))" }} />
           </div>
         </div>
 

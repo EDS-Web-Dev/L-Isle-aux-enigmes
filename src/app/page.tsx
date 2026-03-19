@@ -209,21 +209,21 @@ function Compass({ heading, targetBearing, targetEmoji }: {
 
           {/* Lettres cardinales */}
           {[
-            { label: "N", style: { top: 22, left: "50%", transform: "translateX(-50%)", color: "#8B1010", fontSize: 17, fontWeight: 900, fontFamily: "Georgia, serif" } },
-            { label: "S", style: { bottom: 22, left: "50%", transform: "translateX(-50%)", color: "#3d1a00", fontSize: 13, fontWeight: 700, fontFamily: "Georgia, serif", opacity: 0.75 } },
-            { label: "E", style: { right: 20, top: "50%", transform: "translateY(-50%)", color: "#3d1a00", fontSize: 13, fontWeight: 700, fontFamily: "Georgia, serif", opacity: 0.75 } },
-            { label: "O", style: { left: 20, top: "50%", transform: "translateY(-50%)", color: "#3d1a00", fontSize: 13, fontWeight: 700, fontFamily: "Georgia, serif", opacity: 0.75 } },
+            { label: "N", style: { top: 24, left: "50%", transform: "translateX(-50%)", color: "#8B1010", fontSize: 17, fontWeight: 900, fontFamily: "Georgia, serif", zIndex: 10, textShadow: "0 0 6px rgba(242,212,121,0.8), 0 1px 3px rgba(0,0,0,0.4)" } },
+            { label: "S", style: { bottom: 25, left: "51%", transform: "translateX(-50%)", color: "#3d1a00", fontSize: 13, fontWeight: 700, fontFamily: "Georgia, serif", zIndex: 10, textShadow: "0 0 5px rgba(242,212,121,0.7)" } },
+            { label: "E", style: { right: 38, top: "50%", transform: "translateY(-50%)", color: "#3d1a00", fontSize: 13, fontWeight: 700, fontFamily: "Georgia, serif", zIndex: 10, textShadow: "0 0 5px rgba(242,212,121,0.7)" } },
+            { label: "O", style: { left: 38, top: "50%", transform: "translateY(-50%)", color: "#3d1a00", fontSize: 13, fontWeight: 700, fontFamily: "Georgia, serif", zIndex: 10, textShadow: "0 0 5px rgba(242,212,121,0.7)" } },
           ].map(({ label, style }) => (
             <div key={label} className="absolute" style={style}>{label}</div>
           ))}
 
-          {/* Aiguille Nord — losange rouge */}
-          <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -7, marginTop: -72 }}>
-            <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "64px solid #C44A3A", filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.35))" }} />
+          {/* Aiguille Nord — rouge */}
+          <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -7, marginTop: -60 }}>
+            <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "55px solid #C44A3A", filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.35))" }} />
           </div>
-          {/* Aiguille Sud — losange parchemin foncé */}
-          <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -6, marginTop: 6 }}>
-            <div style={{ width: 0, height: 0, borderLeft: "6px solid transparent", borderRight: "6px solid transparent", borderTop: "52px solid #7a5010", filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.25))" }} />
+          {/* Aiguille Sud — parchemin foncé */}
+          <div className="absolute left-1/2 top-1/2" style={{ marginLeft: -7, marginTop: 8 }}>
+            <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderTop: "55px solid #7a5010", filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.25))" }} />
           </div>
         </div>
 
