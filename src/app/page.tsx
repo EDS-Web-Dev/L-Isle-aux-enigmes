@@ -387,10 +387,7 @@ function MissionCard({ data, meta, progress, distM, alwaysAccessible = false }: 
     state === "completed" ? `2px solid ${t.accentColor}` :
     "2px solid rgba(0,0,0,0.08)";
 
-  const cardShadow =
-    state === "active"
-      ? `0 0 24px ${t.glowColor}, 0 0 48px ${t.glowColor}`
-      : "0 4px 16px rgba(0,0,0,0.12)";
+  const cardShadow = "0 4px 16px rgba(0,0,0,0.12)";
 
   const bannerFilter =
     state === "locked" ? "grayscale(1) brightness(0.4)" :
