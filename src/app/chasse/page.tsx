@@ -90,9 +90,9 @@ function ChasseContent() {
     "islo-spy-007":      "/icons/top_secret.jpg",
   };
   const overlayMap: Record<string, string> = {
-    "islo-hist-710-001": "rgba(120, 80, 20, 0.92)",
-    "islo-kids-lac-001": "rgba(160, 60, 160, 0.90)",
-    "islo-spy-007":      "rgba(5, 20, 5, 0.93)",
+    "islo-hist-710-001": "rgba(120, 80, 20, 0.80)",
+    "islo-kids-lac-001": "rgba(140, 50, 140, 0.78)",
+    "islo-spy-007":      "rgba(5, 20, 5, 0.82)",
   };
   const photo = photoMap[parcours.id];
   const overlay = overlayMap[parcours.id];
@@ -109,13 +109,14 @@ function ChasseContent() {
         )}
         {!photo && <div className={`absolute inset-0 z-0 ${theme.pageBg}`} />}
         {/* Title bar */}
-        <div className={`relative z-10 shrink-0 px-4 pt-3 pb-2 flex items-center gap-3`}>
+        <div className={`relative z-10 shrink-0 px-4 pt-3 pb-2 flex items-center gap-3 backdrop-blur-sm`}
+          style={{ background: "rgba(0,0,0,0.25)" }}>
           <Link href="/" className={`${theme.backColor} active:opacity-70 transition-opacity`}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
               <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
             </svg>
           </Link>
-          <h1 className={`flex-1 text-sm font-bold truncate ${theme.titleColor}`}>
+          <h1 className="flex-1 text-sm font-bold truncate text-white" style={{ textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
             {parcours.titre}
           </h1>
         </div>
@@ -135,7 +136,9 @@ function ChasseContent() {
         {/* Content */}
         <div className="relative z-10 flex-1 overflow-y-auto px-4 pt-4 pb-6 space-y-3">
           {/* Progress bar */}
-          <ProgressBar current={completedSteps.length} total={parcours.etapes.length} />
+          <div className="rounded-2xl px-3 py-2.5 backdrop-blur-sm" style={{ background: "rgba(0,0,0,0.25)" }}>
+            <ProgressBar current={completedSteps.length} total={parcours.etapes.length} />
+          </div>
 
           {/* Spy status bar */}
           {isSpy && (
