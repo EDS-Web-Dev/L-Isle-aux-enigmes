@@ -121,11 +121,19 @@ const ADVENTURES: AdventureMeta[] = [
     sector: "Secteur Centre",
     theme: "espion",
   },
+  {
+    file: "maitrecampanaire",
+    emoji: "🔔",
+    illustration: "🔔⛪🗺️",
+    photo: "/icons/campanaire.jpg",
+    tags: ["Historique"],
+    sector: "Secteur Centre",
+    theme: "histoire",
+  },
 ];
 
 const COMING_SOON: ComingSoonItem[] = [
   { emoji: "🗿",   titre: "Le Totem Perdu du Lac",       sector: "Secteur Lac",    tags: ["Famille"],    lat: 43.610, lng: 1.072 },
-  { emoji: "🔔",   titre: "Maître Campanaire",            sector: "Secteur Centre", tags: ["Historique"], lat: 43.616, lng: 1.083 },
   { emoji: "🛰️",  titre: "Opération L.I.S.L.E. : Lac",  sector: "Secteur Lac",    tags: ["Espionnage"], lat: 43.609, lng: 1.071 },
   { emoji: "🏴‍☠️", titre: "Le Trésor du Capitaine Save", sector: "Secteur Port",   tags: ["Aventure"],   lat: 43.611, lng: 1.069 },
   { emoji: "🦎",   titre: "Les Gardiens du Lac",          sector: "Secteur Lac",    tags: ["Nature"],     lat: 43.608, lng: 1.073 },
@@ -893,10 +901,11 @@ export default function Home() {
             onClick={() => {
               const el = carouselRef.current;
               if (!el) return;
-              const cardWidth = el.scrollWidth / ADVENTURES.length;
+              const padding = 56; // px-14 = 3.5rem = 56px
+const cardWidth = (el.scrollWidth - padding * 2) / ADVENTURES.length;
               el.scrollTo({ left: el.scrollLeft - cardWidth, behavior: "smooth" });
             }}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-10 w-10 h-10 items-center justify-center rounded-full shadow-lg transition-opacity active:opacity-70"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 w-10 h-10 items-center justify-center rounded-full shadow-lg transition-opacity active:opacity-70"
             style={{ background: "#C44A3A", color: "white" }}
             aria-label="Précédent">
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
@@ -905,11 +914,12 @@ export default function Home() {
           </button>
 
           <div ref={carouselRef}
-            className="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory md:px-14"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none", scrollPaddingLeft: "3.5rem" }}
             onScroll={(e) => {
               const el = e.currentTarget;
-              const cardWidth = el.scrollWidth / ADVENTURES.length;
+              const padding = 56; // px-14 = 3.5rem = 56px
+const cardWidth = (el.scrollWidth - padding * 2) / ADVENTURES.length;
               setActiveCard(Math.round(el.scrollLeft / cardWidth));
             }}>
             {ADVENTURES.map((meta, i) => {
@@ -932,10 +942,11 @@ export default function Home() {
             onClick={() => {
               const el = carouselRef.current;
               if (!el) return;
-              const cardWidth = el.scrollWidth / ADVENTURES.length;
+              const padding = 56; // px-14 = 3.5rem = 56px
+const cardWidth = (el.scrollWidth - padding * 2) / ADVENTURES.length;
               el.scrollTo({ left: el.scrollLeft + cardWidth, behavior: "smooth" });
             }}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-10 w-10 h-10 items-center justify-center rounded-full shadow-lg transition-opacity active:opacity-70"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 w-10 h-10 items-center justify-center rounded-full shadow-lg transition-opacity active:opacity-70"
             style={{ background: "#C44A3A", color: "white" }}
             aria-label="Suivant">
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">

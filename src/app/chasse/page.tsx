@@ -88,11 +88,13 @@ function ChasseContent() {
     "islo-hist-710-001": "/icons/livres.jpg",
     "islo-kids-lac-001": "/icons/fée.jpg",
     "islo-spy-007":      "/icons/top_secret.jpg",
+    "islo-hist-002":     "/icons/campanaire.jpg",
   };
   const overlayMap: Record<string, string> = {
     "islo-hist-710-001": "rgba(120, 80, 20, 0.80)",
     "islo-kids-lac-001": "rgba(140, 50, 140, 0.78)",
     "islo-spy-007":      "rgba(5, 20, 5, 0.82)",
+    "islo-hist-002":     "rgba(120, 80, 20, 0.80)",
   };
   const photo = photoMap[parcours.id];
   const overlay = overlayMap[parcours.id];
