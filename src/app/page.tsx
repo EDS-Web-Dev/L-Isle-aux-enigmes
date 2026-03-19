@@ -759,7 +759,7 @@ export default function Home() {
             style={{ background: "rgba(242,212,121,0.25)" }}>📍</div>
           <div>
             <h2 className="text-base font-extrabold leading-none" style={{ color: "#F2D479" }}>Aventures près de toi</h2>
-            <p className="text-[15px] mt-0.5" style={{ color: "rgba(242,212,121,0.6)" }}>Découvre ce qui t&apos;entoure</p>
+            <p className="text-sm font-bold mt-0.5" style={{ color: "#6FAF4F", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}>Découvre ce qui t&apos;entoure</p>
           </div>
         </div>
 
@@ -819,7 +819,7 @@ export default function Home() {
               </div>
             )*/}
 
-            <p className="text-[10px] font-bold uppercase tracking-widest mb-3" style={{ color: "white" }}>
+            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: "white" }}>
               ✅ Missions à portée
             </p>
             {allLocations.filter((loc) => loc.dist !== null && loc.dist * 1000 <= 50).length === 0 && (
@@ -880,9 +880,6 @@ export default function Home() {
           <div className="w-8 h-8 rounded-xl flex items-center justify-center text-lg" style={{ background: "rgba(196,74,58,0.15)" }}>🎯</div>
           <div>
             <h2 className="text-base font-extrabold leading-none" style={{ color: "#C44A3A" }}>Missions disponibles</h2>
-            <p className="text-[11px] mt-0.5" style={{ color: "rgba(196,74,58,0.6)" }}>
-              {userPos ? "La carte s'adapte à ta position 📍" : "Active la localisation pour débloquer les cartes"}
-            </p>
           </div>
           <span className="ml-auto text-[10px] font-extrabold px-2 py-1 rounded-full"
             style={{ background: "#6FAF4F", color: "white" }}>{ADVENTURES.length} dispo</span>
