@@ -770,7 +770,7 @@ export default function Home() {
             style={{ background: "rgba(242,212,121,0.25)" }}>📍</div>
           <div>
             <h2 className="text-base font-extrabold leading-none" style={{ color: "#F2D479" }}>Aventures près de toi</h2>
-            <p className="text-sm font-bold mt-0.5" style={{ color: "#6FAF4F", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}>Découvre ce qui t&apos;entoure</p>
+            <p className="text-sm font-extrabold mt-0.5" style={{ color: "#F2D479", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>Découvre ce qui t&apos;entoure</p>
           </div>
         </div>
 
