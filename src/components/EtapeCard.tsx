@@ -19,7 +19,8 @@ export default function EtapeCard({ etape, userPosition, onCorrect }: EtapeCardP
   const isInZone = distance !== null && distance <= etape.validation_radius;
 
   return (
-    <div className={`rounded-3xl overflow-hidden border ${t.enigmeCardBorder} ${t.enigmeCardBg} shadow-sm`}>
+    <div className={`rounded-3xl overflow-hidden border ${t.enigmeCardBorder} ${t.enigmeCardBg} shadow-2xl backdrop-blur-sm`}
+      style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3)", opacity: 0.97 }}>
 
       {/* ── Header ─────────────────────────────────── */}
       <div className="px-5 pt-5 pb-4">
@@ -44,13 +45,14 @@ export default function EtapeCard({ etape, userPosition, onCorrect }: EtapeCardP
           )}
         </div>
 
-        <p className={`text-xs mt-1.5 leading-relaxed ${t.subtitleColor}`}>
+        <p className={`text-xs mt-1.5 leading-relaxed font-medium ${t.subtitleColor}`}>
           {etape.instruction}
         </p>
       </div>
 
       {/* ── Histoire ───────────────────────────────── */}
-      <div className={`mx-4 mb-4 rounded-2xl px-4 py-3.5 ${t.storyBg}`}>
+      <div className={`mx-4 mb-4 rounded-2xl px-4 py-3.5 ${t.storyBg}`}
+        style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.1)" }}>
         <div className={`text-xl leading-none mb-1 opacity-40 ${t.storyText}`}>&ldquo;</div>
         <p className={`text-sm italic leading-relaxed ${t.storyText}`}>
           {etape.histoire}
