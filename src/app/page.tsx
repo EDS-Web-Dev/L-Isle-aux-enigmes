@@ -652,11 +652,25 @@ export default function Home() {
       startCompass();
     }
     watchIdRef.current = navigator.geolocation.watchPosition(
-      (pos) => { setUserPos({ lat: pos.coords.latitude, lng: pos.coords.longitude }); setGeoStatus("ok"); },
-      () => setGeoStatus("denied"),
+      (pos) => {
+        setUserPos({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        setGeoStatus("ok");
+        localStorage.setItem("islo-geo-consent", "granted");
+      },
+      () => {
+        setGeoStatus("denied");
+        localStorage.setItem("islo-geo-consent", "denied");
+      },
       { enableHighAccuracy: true, maximumAge: 5000 }
     );
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("islo-geo-consent") === "granted") {
+      requestGeo();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const allLocations = ADVENTURES.map((a, i) => {
     const coords = adventures[i]?.point_depart?.coords ?? null;
