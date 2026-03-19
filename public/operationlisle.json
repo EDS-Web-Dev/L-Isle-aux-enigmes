@@ -7,6 +7,15 @@
   "difficulty": 4,
   "age_conseille": "10-13 ans",
   "temps_estime": "55 min",
+  "point_depart": {
+    "nom": "Mairie de L'Isle-Jourdain",
+    "coords": {
+      "lat": 43.61245,
+      "lng": 1.08345
+    },
+    "texte_bienvenue": "Agent, votre mission commence ici. La mairie est votre point d'activation. Restez discret — les hackers ont des yeux partout.",
+    "consigne_action": "Rejoignez le parvis de la mairie pour activer votre liaison sécurisée avec l'Agence."
+  },
   "config": {
     "unite_distance": "metres",
     "precision_gps_requise": 15,
