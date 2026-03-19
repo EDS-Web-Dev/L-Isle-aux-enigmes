@@ -888,27 +888,62 @@ export default function Home() {
             style={{ background: "#6FAF4F", color: "white" }}>{ADVENTURES.length} dispo</span>
         </div>
 
-        <div ref={carouselRef}
-          className="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          onScroll={(e) => {
-            const el = e.currentTarget;
-            const cardWidth = el.scrollWidth / ADVENTURES.length;
-            setActiveCard(Math.round(el.scrollLeft / cardWidth));
-          }}>
-          {ADVENTURES.map((meta, i) => {
-            const data = adventures[i];
-            if (!data) return (
-              <div key={meta.file} className="shrink-0 snap-center w-[80vw] max-w-sm h-64 rounded-3xl animate-pulse" style={{ background: "rgba(196,74,58,0.15)" }} />
-            );
-            const coords = data.point_depart?.coords;
-            const distM = (userPos && coords) ? haversine(userPos.lat, userPos.lng, coords.lat, coords.lng) * 1000 : null;
-            return (
-              <div key={meta.file} className="shrink-0 snap-center w-[80vw] max-w-sm">
-                <MissionCard data={data} meta={meta} progress={progresses[i]} distM={distM} alwaysAccessible />
-              </div>
-            );
-          })}
+        {/* Wrapper pour les flèches sur grand écran */}
+        <div className="relative">
+          {/* Flèche gauche — visible uniquement md+ */}
+          <button
+            onClick={() => {
+              const el = carouselRef.current;
+              if (!el) return;
+              const cardWidth = el.scrollWidth / ADVENTURES.length;
+              el.scrollTo({ left: el.scrollLeft - cardWidth, behavior: "smooth" });
+            }}
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-10 w-10 h-10 items-center justify-center rounded-full shadow-lg transition-opacity active:opacity-70"
+            style={{ background: "#C44A3A", color: "white" }}
+            aria-label="Précédent">
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+              <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
+            </svg>
+          </button>
+
+          <div ref={carouselRef}
+            className="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            onScroll={(e) => {
+              const el = e.currentTarget;
+              const cardWidth = el.scrollWidth / ADVENTURES.length;
+              setActiveCard(Math.round(el.scrollLeft / cardWidth));
+            }}>
+            {ADVENTURES.map((meta, i) => {
+              const data = adventures[i];
+              if (!data) return (
+                <div key={meta.file} className="shrink-0 snap-center w-[80vw] max-w-sm h-64 rounded-3xl animate-pulse" style={{ background: "rgba(196,74,58,0.15)" }} />
+              );
+              const coords = data.point_depart?.coords;
+              const distM = (userPos && coords) ? haversine(userPos.lat, userPos.lng, coords.lat, coords.lng) * 1000 : null;
+              return (
+                <div key={meta.file} className="shrink-0 snap-center w-[80vw] max-w-sm">
+                  <MissionCard data={data} meta={meta} progress={progresses[i]} distM={distM} alwaysAccessible />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Flèche droite — visible uniquement md+ */}
+          <button
+            onClick={() => {
+              const el = carouselRef.current;
+              if (!el) return;
+              const cardWidth = el.scrollWidth / ADVENTURES.length;
+              el.scrollTo({ left: el.scrollLeft + cardWidth, behavior: "smooth" });
+            }}
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-10 w-10 h-10 items-center justify-center rounded-full shadow-lg transition-opacity active:opacity-70"
+            style={{ background: "#C44A3A", color: "white" }}
+            aria-label="Suivant">
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+              <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638l-4.158-3.96a.75.75 0 011.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+            </svg>
+          </button>
         </div>
 
         {/* ── Indicateurs de scroll ── */}
