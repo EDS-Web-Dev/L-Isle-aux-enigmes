@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Circle, useMap } from "react-leaflet";
 import L from "leaflet";
 import { Etape, Coords } from "@/lib/types";
@@ -54,11 +54,25 @@ const USER_ICON = L.divIcon({
   iconAnchor: [10, 10],
 });
 
-function RecenterMap({ center }: { center: [number, number] }) {
+function MapController({ center }: { center: [number, number] }) {
   const map = useMap();
+  const isFirst = useRef(true);
+
   useEffect(() => {
-    map.flyTo(center, map.getZoom(), { duration: 0.8 });
+    // Invalide la taille au montage pour éviter l'effet de vibration
+    map.invalidateSize();
+  }, [map]);
+
+  useEffect(() => {
+    if (isFirst.current) {
+      // Premier rendu : positionnement immédiat sans animation
+      map.setView(center, map.getZoom(), { animate: false });
+      isFirst.current = false;
+    } else {
+      map.flyTo(center, map.getZoom(), { duration: 0.8 });
+    }
   }, [center, map]);
+
   return null;
 }
 
@@ -85,7 +99,7 @@ export default function GameMap({ etapes, currentIndex, completedSteps, userPosi
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
       />
-      <RecenterMap center={center} />
+      <MapController center={center} />
 
       {etapes.map((etape, i) => {
         const isDone = completedSteps.includes(etape.id);
