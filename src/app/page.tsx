@@ -280,6 +280,83 @@ function DifficultyStars({ value, color }: { value: number; color: string }) {
   );
 }
 
+/* ── Illustrations SVG par thème ───────────────────── */
+function IllustrationHistoire({ filter }: { filter: string }) {
+  return (
+    <svg width="140" height="120" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter }}>
+      {/* Parchemin */}
+      <rect x="20" y="10" width="100" height="80" rx="4" fill="#f5e6c0" stroke="#8B6914" strokeWidth="2"/>
+      <path d="M20 18 Q10 18 10 28 Q10 38 20 38" fill="#e8d09a" stroke="#8B6914" strokeWidth="1.5"/>
+      <path d="M120 18 Q130 18 130 28 Q130 38 120 38" fill="#e8d09a" stroke="#8B6914" strokeWidth="1.5"/>
+      <path d="M20 72 Q10 72 10 82 Q10 92 20 92" fill="#e8d09a" stroke="#8B6914" strokeWidth="1.5"/>
+      <path d="M120 72 Q130 72 130 82 Q130 92 120 92" fill="#e8d09a" stroke="#8B6914" strokeWidth="1.5"/>
+      {/* Lignes de texte */}
+      <line x1="35" y1="30" x2="105" y2="30" stroke="#8B6914" strokeWidth="1.5" strokeLinecap="round" opacity="0.5"/>
+      <line x1="35" y1="40" x2="105" y2="40" stroke="#8B6914" strokeWidth="1.5" strokeLinecap="round" opacity="0.5"/>
+      <line x1="35" y1="50" x2="90" y2="50" stroke="#8B6914" strokeWidth="1.5" strokeLinecap="round" opacity="0.5"/>
+      {/* Sceau */}
+      <circle cx="70" cy="72" r="14" fill="#C44A3A" opacity="0.85"/>
+      <circle cx="70" cy="72" r="10" fill="none" stroke="#f5e6c0" strokeWidth="1"/>
+      <text x="70" y="77" textAnchor="middle" fill="#f5e6c0" fontSize="10" fontWeight="bold" fontFamily="Georgia, serif">✦</text>
+      {/* Plume */}
+      <path d="M95 15 Q115 5 118 25 Q105 20 98 35 Q100 22 95 15Z" fill="#d4a820" opacity="0.9"/>
+      <line x1="98" y1="35" x2="88" y2="60" stroke="#7a5010" strokeWidth="1.2" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function IllustrationFeerie({ filter }: { filter: string }) {
+  return (
+    <svg width="140" height="120" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter }}>
+      {/* Baguette magique */}
+      <line x1="30" y1="95" x2="90" y2="35" stroke="#7a3a8a" strokeWidth="4" strokeLinecap="round"/>
+      <line x1="30" y1="95" x2="90" y2="35" stroke="#c084fc" strokeWidth="2" strokeLinecap="round" opacity="0.6"/>
+      {/* Étoile au bout */}
+      <polygon points="90,20 93,30 104,30 95,37 98,47 90,40 82,47 85,37 76,30 87,30" fill="#F2D479" stroke="#bf4abf" strokeWidth="1"/>
+      {/* Étincelles */}
+      <circle cx="112" cy="25" r="3" fill="#F2D479" opacity="0.9"/>
+      <circle cx="120" cy="45" r="2" fill="#c084fc" opacity="0.8"/>
+      <circle cx="105" cy="55" r="2.5" fill="#F2D479" opacity="0.7"/>
+      <circle cx="25" cy="40" r="2" fill="#c084fc" opacity="0.6"/>
+      <circle cx="18" cy="60" r="3" fill="#F2D479" opacity="0.8"/>
+      <circle cx="35" cy="20" r="2" fill="#c084fc" opacity="0.7"/>
+      {/* Petites étoiles */}
+      <polygon points="50,15 51.5,20 57,20 52.5,23 54,28 50,25 46,28 47.5,23 43,20 48.5,20" fill="#F2D479" opacity="0.6" transform="scale(0.7) translate(22,5)"/>
+      <polygon points="118,70 119,74 123,74 120,76 121,80 118,78 115,80 116,76 113,74 117,74" fill="#c084fc" opacity="0.7" transform="scale(0.6) translate(80,-20)"/>
+      {/* Nuage féérique */}
+      <ellipse cx="38" cy="85" rx="18" ry="10" fill="#fce8f8" opacity="0.5"/>
+      <ellipse cx="52" cy="80" rx="14" ry="9" fill="#fce8f8" opacity="0.5"/>
+      <ellipse cx="64" cy="84" rx="12" ry="8" fill="#fce8f8" opacity="0.4"/>
+    </svg>
+  );
+}
+
+function IllustrationEspion({ filter }: { filter: string }) {
+  return (
+    <svg width="140" height="120" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter }}>
+      {/* Loupe */}
+      <circle cx="65" cy="55" r="32" fill="none" stroke="#D97A2B" strokeWidth="4"/>
+      <circle cx="65" cy="55" r="32" fill="rgba(217,122,43,0.08)"/>
+      <circle cx="65" cy="55" r="24" fill="none" stroke="#D97A2B" strokeWidth="1.5" opacity="0.4"/>
+      {/* Reflet loupe */}
+      <path d="M50 38 Q55 33 62 35" stroke="white" strokeWidth="2.5" strokeLinecap="round" opacity="0.4"/>
+      {/* Manche */}
+      <line x1="88" y1="78" x2="115" y2="105" stroke="#D97A2B" strokeWidth="7" strokeLinecap="round"/>
+      <line x1="88" y1="78" x2="115" y2="105" stroke="#f0a050" strokeWidth="3" strokeLinecap="round" opacity="0.5"/>
+      {/* Empreinte digitale dans la loupe */}
+      <circle cx="65" cy="55" r="8" fill="none" stroke="#D97A2B" strokeWidth="1.2" opacity="0.6"/>
+      <circle cx="65" cy="55" r="13" fill="none" stroke="#D97A2B" strokeWidth="1" opacity="0.4"/>
+      <circle cx="65" cy="55" r="18" fill="none" stroke="#D97A2B" strokeWidth="0.8" opacity="0.25"/>
+      {/* Point central */}
+      <circle cx="65" cy="55" r="3" fill="#D97A2B" opacity="0.8"/>
+      {/* Lignes de scan */}
+      <line x1="38" y1="45" x2="92" y2="45" stroke="#D97A2B" strokeWidth="0.8" opacity="0.3"/>
+      <line x1="36" y1="55" x2="94" y2="55" stroke="#D97A2B" strokeWidth="0.8" opacity="0.3"/>
+      <line x1="38" y1="65" x2="92" y2="65" stroke="#D97A2B" strokeWidth="0.8" opacity="0.3"/>
+    </svg>
+  );
+}
+
 /* ── MissionCard — 3 états × 3 thèmes ──────────────── */
 function MissionCard({ data, meta, progress, distM, alwaysAccessible = false }: {
   data: AdventureInfo;
@@ -324,11 +401,12 @@ function MissionCard({ data, meta, progress, distM, alwaysAccessible = false }: 
       <div className="h-44 flex items-center justify-center relative overflow-hidden"
         style={{ background: t.bannerGradient }}>
 
-        {/* Illustration */}
-        <span className="relative z-10 text-6xl drop-shadow-lg transition-all duration-500"
-          style={{ filter: bannerFilter }}>
-          {meta.illustration}
-        </span>
+        {/* Illustration SVG */}
+        <div className="relative z-10 transition-all duration-500">
+          {meta.theme === "histoire" && <IllustrationHistoire filter={bannerFilter} />}
+          {meta.theme === "feerie"   && <IllustrationFeerie   filter={bannerFilter} />}
+          {meta.theme === "espion"   && <IllustrationEspion   filter={bannerFilter} />}
+        </div>
 
         {/* LOCKED : overlay frosted glass + cadenas + distance */}
         {state === "locked" && (
@@ -357,12 +435,6 @@ function MissionCard({ data, meta, progress, distM, alwaysAccessible = false }: 
         )}
 
         {/* ACTIVE : badge zone atteinte */}
-        {state === "active" && (
-          <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-extrabold z-20"
-            style={{ background: "#6FAF4F", color: "white" }}>
-            ✅ Zone atteinte !
-          </div>
-        )}
 
         {/* Féérie : étincelles quand actif */}
         {state === "active" && meta.theme === "feerie" && (
@@ -613,10 +685,41 @@ export default function Home() {
             <span className="font-bold" style={{ color: "#F2D479" }}>Explore L&apos;Isle-Jourdain 🌿</span>
           </p>
           <div className="flex justify-center gap-2 mt-6">
-            {[{ v: "8", l: "aventures", icon: "🗺️" }, { v: "20+", l: "énigmes", icon: "🧩" }, { v: "100%", l: "outdoor", icon: "🌳" }].map(({ v, l, icon }) => (
+            {[
+              {
+                v: "8", l: "aventures",
+                icon: (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C44A3A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="3,6 9,3 15,6 21,3 21,18 15,21 9,18 3,21"/>
+                    <line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/>
+                  </svg>
+                ),
+              },
+              {
+                v: "20+", l: "énigmes",
+                icon: (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C44A3A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  </svg>
+                ),
+              },
+              {
+                v: "100%", l: "outdoor",
+                icon: (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C44A3A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    <circle cx="9" cy="7" r="4"/>
+                  </svg>
+                ),
+              },
+            ].map(({ v, l, icon }) => (
               <div key={l} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold"
                 style={{ background: "rgba(242,212,121,0.5)", color: "#C44A3A", border: "1px solid rgba(242,212,121,0.3)" }}>
-                <span>{icon}</span> {v} {l}
+                {icon} {v} {l}
               </div>
             ))}
           </div>
