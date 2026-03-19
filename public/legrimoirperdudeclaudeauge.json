@@ -1,0 +1,105 @@
+{
+    "id": "islo-hist-710-001",
+    "version": "1.0",
+    "titre": "Le Secret de Claude Augé",
+    "description": "Retrouvez le mot perdu du créateur du Petit Larousse dans le centre historique.",
+    "ville": "L'Isle-Jourdain",
+    "difficulty": 2,
+    "age_conseille": "7-10 ans",
+    "temps_estime": "45-50 min",
+    "config": {
+      "unite_distance": "metres",
+      "precision_gps_requise": 15,
+      "theme_color": "#D35400"
+    },
+    "point_depart": {
+      "nom": "Maison Claude Augé",
+      "coords": { "lat": 43.61343, "lng": 1.08219 },
+      "texte_bienvenue": "Vous êtes devant la magnifique maison du papa du dictionnaire Larousse. Regardez ses vitraux colorés ! Pour commencer votre mission, vous allez devoir explorer les alentours comme de vrais détectives des mots.",
+      "consigne_action": "Placez-vous devant l'entrée de la Maison Claude Augé pour activer votre carnet de notes."
+    },
+    "etapes": [
+      {
+        "id": "plaque-auge",
+        "nom": "La Mémoire du Maître",
+        "instruction": "Approchez-vous de la plaque fixée sur le mur, juste à droite de la grande porte noire de la maison.",
+        "coords": { "lat": 43.61343, "lng": 1.08219 },
+        "validation_radius": 15,
+        "histoire": "Claude Augé est né ici. Avant de créer des dictionnaires, il a été un petit garçon qui jouait dans ces mêmes rues !",
+        "enigme": {
+          "type": "NUMBER",
+          "question": "En quelle année est né Claude Augé ? Additionnez les deux derniers chiffres de cette année (ex: si c'est 1850, faites 5+0).",
+          "reponse": "9",
+          "indice": "Il est né en 1854. Calculez 5 + 4.",
+          "message_succes": "Correct ! Le chiffre 9 est votre première clé."
+        }
+      },
+      {
+        "id": "horloge",
+        "nom": "Le Maître du Temps",
+        "instruction": "Dirigez-vous vers la Collégiale Saint-Martin et regardez l'horloge sur la tour de gauche.",
+        "coords": { "lat": 43.61244, "lng": 1.08196 },
+        "validation_radius": 20,
+        "histoire": "Pour écrire un dictionnaire, il faut beaucoup de temps et de patience.",
+        "enigme": {
+          "type": "NUMBER",
+          "question": "Sur le cadran de l'horloge, comptez combien de fois vous voyez le chiffre romain 'V' (seul ou accompagné comme dans IV, VI, VII, VIII). Combien y en a-t-il au total ?",
+          "reponse": "5",
+          "indice": "Regardez les chiffres 4, 5, 6, 7 et 8. Ils contiennent tous un 'V'.",
+          "message_succes": "Bien vu ! Le temps n'a plus de secret pour vous."
+        }
+      },
+      {
+        "id": "halles-lettres",
+        "nom": "La Forêt de Bois",
+        "instruction": "Allez sous les Halles, la grande place couverte.",
+        "coords": { "lat": 43.61307, "lng": 1.08263 },
+        "validation_radius": 15,
+        "histoire": "Sous ces halles, on vendait des grains et des légumes. Claude Augé venait y écouter les gens parler pour trouver de nouveaux mots.",
+        "enigme": {
+          "type": "NUMBER",
+          "question": "Comptez le nombre de gros piliers en bois qui soutiennent le toit au milieu (ne comptez pas ceux qui touchent les murs). Enlevez 2 à ce chiffre pour trouver l'indice.",
+          "reponse": "6",
+          "indice": "Il y a 8 piliers centraux. 8 - 2 = ?",
+          "message_succes": "Correct ! Les piliers de la connaissance sont solides."
+        }
+      },
+      {
+        "id": "statue-pensee",
+        "nom": "L'Enigme du Musée",
+        "instruction": "Placez-vous devant l'entrée du Musée Campanaire (l'ancienne mairie).",
+        "coords": { "lat": 43.61311, "lng": 1.08156 },
+        "validation_radius": 15,
+        "histoire": "Au-dessus de la porte, il y a des sculptures qui représentent la sagesse.",
+        "enigme": {
+          "type": "CHOICE",
+          "question": "Quel objet porte le personnage sculpté tout en haut du bâtiment, au-dessus de l'horloge ?",
+          "options": ["Un livre", "Une cloche", "Un flambeau", "Une épée"],
+          "reponse": "Un flambeau",
+          "indice": "C'est quelque chose qui apporte de la lumière (le symbole de l'intelligence).",
+          "message_succes": "Exactement ! La lumière du savoir."
+        }
+      },
+      {
+        "id": "save-mots",
+        "nom": "Le Mot de la Fin",
+        "instruction": "Descendez vers le pont qui enjambe la rivière.",
+        "coords": { "lat": 43.61105, "lng": 1.08450 },
+        "validation_radius": 20,
+        "histoire": "L'eau de la rivière coule comme les mots dans un livre. Claude Augé a enfin retrouvé son mot préféré.",
+        "enigme": {
+          "type": "TEXT",
+          "question": "Je commence par un 'S', je finis par un 'E', et je suis le nom de la rivière qui coule sous vos pieds. Qui suis-je ?",
+          "reponse": "Save",
+          "indice": "C'est écrit sur le panneau de la rue juste avant le pont.",
+          "message_succes": "Félicitations ! Vous avez complété la première page du grimoire !"
+        }
+      }
+    ],
+    "final": {
+      "titre": "Grand Maître des Mots",
+      "message": "Claude Augé est fier de vous ! Vous avez prouvé que l'histoire et les mots sont une formidable aventure. Le Petit Larousse peut enfin être imprimé !",
+      "recompense": "Badge de l'Académicien de l'Isle 📚",
+      "code_validation": "LAROUSSE-32"
+    }
+  }
