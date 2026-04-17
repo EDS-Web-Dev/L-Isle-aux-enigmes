@@ -130,6 +130,14 @@ const ADVENTURES: AdventureMeta[] = [
     sector: "Secteur Centre",
     theme: "histoire",
   },
+  {
+    file: "loulouetlabaguettemagique",
+    emoji: "🪄",
+    illustration: "🪄🧚✨",
+    tags: ["Magie", "3-6 ans"],
+    sector: "Secteur Lac",
+    theme: "feerie",
+  },
 ];
 
 const COMING_SOON: ComingSoonItem[] = [
