@@ -134,6 +134,7 @@ const ADVENTURES: AdventureMeta[] = [
     file: "loulouetlabaguettemagique",
     emoji: "🪄",
     illustration: "🪄🧚✨",
+    photo: "/icons/loulou.jpg",
     tags: ["Magie", "3-6 ans"],
     sector: "Secteur Lac",
     theme: "feerie",
