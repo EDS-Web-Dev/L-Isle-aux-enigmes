@@ -1,0 +1,108 @@
+{
+  "id": "islo-kids-alliance-001",
+  "version": "1.0",
+  "titre": "L'Aventure des Petits Explorateurs : Le Secret des 3 Pays",
+  "description": "Pars à la découverte des trésors de France, d'Italie et d'Espagne cachés autour du lac !",
+  "ville": "L'Isle-Jourdain",
+  "difficulty": 1,
+  "age_conseille": "3-7 ans",
+  "temps_estime": "30-40 min",
+  "config": {
+    "unite_distance": "metres",
+    "precision_gps_requise": 20,
+    "theme_color": "#9b4abf"
+  },
+  "point_depart": {
+    "nom": "Panneau des Jumelages",
+    "coords": {
+      "lat": 43.615093,
+      "lng": 1.073640
+    },
+    "texte_bienvenue": "Bienvenue, petit explorateur ! Tu vas traverser la France, l'Italie et l'Espagne en faisant le tour du lac. Prêt pour l'aventure ?",
+    "consigne_action": "Rends-toi devant le grand panneau blanc de la Fête des Jumelages pour commencer !"
+  },
+  "etapes": [
+    {
+      "id": "etape-1-jumelages",
+      "nom": "Le Signal de l'Alliance",
+      "instruction": "Trouve le grand panneau blanc qui parle de la Fête des Jumelages.",
+      "coords": {
+        "lat": 43.615093,
+        "lng": 1.073640
+      },
+      "validation_radius": 20,
+      "histoire": "C'est ici que tout commence ! Trois pays se sont donné la main pour créer cette alliance magique au bord du lac.",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "Combien de noms commencent par la lettre 'M.' sur la liste des maires ?",
+        "options": ["1", "2", "3"],
+        "reponse": "3",
+        "indice": "Compte les 'M.' avec un point juste après.",
+        "message_succes": "Bravo ! Les 3 pays sont réunis. En route pour la France !"
+      }
+    },
+    {
+      "id": "etape-2-pigeonnier",
+      "nom": "La Maison des Oiseaux",
+      "instruction": "Cherche la petite maison avec un toit en tuiles marron sur l'herbe.",
+      "coords": {
+        "lat": 43.615095,
+        "lng": 1.073319
+      },
+      "validation_radius": 20,
+      "histoire": "C'est ici que les oiseaux voyageurs se reposaient avant de porter des lettres en Italie. C'est le monument de la France !",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "Quel oiseau habitait ici pour porter les messages : un Canard ou un Pigeon ?",
+        "options": ["Canard", "Pigeon"],
+        "reponse": "Pigeon",
+        "indice": "Le nom de cette petite tour (Pigeonnier) commence comme cet oiseau !",
+        "message_succes": "Excellent ! Le message est envoyé. Direction l'Italie !"
+      }
+    },
+    {
+      "id": "etape-3-campanile",
+      "nom": "Le Chapeau Rouge",
+      "instruction": "Regarde la tour très fine avec un toit pointu rouge.",
+      "coords": {
+        "lat": 43.615069,
+        "lng": 1.073336
+      },
+      "validation_radius": 20,
+      "histoire": "Ce Campanile vient d'Italie. Tout en haut, il y a une cloche qui sonne pour prévenir les explorateurs que le trésor est proche.",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "De quelle couleur est le chapeau (le toit) pointu de cette tour ?",
+        "options": ["Vert", "Jaune", "Rouge"],
+        "reponse": "Rouge",
+        "indice": "C'est la couleur des fraises ou du camion de pompiers.",
+        "message_succes": "Bien vu ! La cloche a sonné. Finissons le voyage en Espagne !"
+      }
+    },
+    {
+      "id": "etape-4-horreo",
+      "nom": "La Maison à Pattes",
+      "instruction": "Cherche la maison en pierre blanche qui est posée sur des jambes.",
+      "coords": {
+        "lat": 43.614898,
+        "lng": 1.073314
+      },
+      "validation_radius": 20,
+      "histoire": "Cet Hórreo vient d'Espagne. Ses jambes en pierre l'empêchent de se mouiller et gardent les souris loin des céréales !",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "Combien de pieds (piliers blancs) vois-tu sous cette maison pour la porter ?",
+        "options": ["2", "4", "6"],
+        "reponse": "6",
+        "indice": "Compte les piliers : il y en a 3 devant et 3 derrière.",
+        "message_succes": "Génial ! Tu as trouvé tous les secrets des 3 pays."
+      }
+    }
+  ],
+  "final": {
+    "titre": "Félicitations, Grand Explorateur !",
+    "message": "Tu as traversé la France, l'Italie et l'Espagne en un rien de temps. Tu es un champion du lac ! Fais un vœu pour célébrer l'amitié entre les pays.",
+    "recompense": "Badge Explorateur du Monde débloqué 🌍",
+    "code_validation": "ALLIANCE-3PAYS"
+  }
+}

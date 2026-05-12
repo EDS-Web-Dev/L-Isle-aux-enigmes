@@ -66,7 +66,7 @@ export default function EtapeCard({ etape, userPosition, onCorrect }: EtapeCardP
       {/* ── Énigme ─────────────────────────────────── */}
       <div className="px-5 pb-5">
         {isInZone ? (
-          <EnigmeForm enigme={etape.enigme} onCorrect={onCorrect} />
+          <EnigmeForm key={etape.id} enigme={etape.enigme} onCorrect={onCorrect} />
         ) : (
           <div className="flex flex-col items-center py-6 gap-3 text-center">
             <span className="text-4xl">{t.lockedIcon}</span>
