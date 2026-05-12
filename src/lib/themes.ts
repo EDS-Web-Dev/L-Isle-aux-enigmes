@@ -360,9 +360,9 @@ export const MEDIEVAL_THEME: Theme = {
 };
 
 export function getTheme(parcoursId: string): Theme {
-  if (parcoursId === "islo-spy-007" || parcoursId === "islo-spy-lac-001") return SPY_THEME;
+  if (parcoursId === "islo-spy-007" || parcoursId === "islo-spy-lac-001" || parcoursId === "islo-spy-alliance-001") return SPY_THEME;
   if (parcoursId === "islo-hist-002") return HISTORIC_THEME;
   if (parcoursId === "islo-hist-710-001") return MEDIEVAL_THEME;
-  if (parcoursId === "islo-kids-lac-001") return FAIRY_THEME;
+  if (parcoursId === "islo-kids-lac-001" || parcoursId === "islo-kids-alliance-001") return FAIRY_THEME;
   return DEFAULT_THEME;
 }

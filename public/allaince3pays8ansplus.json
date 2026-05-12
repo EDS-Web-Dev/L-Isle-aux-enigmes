@@ -1,0 +1,104 @@
+{
+  "id": "islo-spy-alliance-001",
+  "version": "1.0",
+  "titre": "Opération L.I.S.L.E : Le Secret des Trois Nations",
+  "description": "Infiltrez l'alliance secrète de l'an 2000 et récupérez les codes de transmission internationaux.",
+  "ville": "L'Isle-Jourdain",
+  "difficulty": 3,
+  "age_conseille": "8 ans et plus",
+  "temps_estime": "40-50 min",
+  "config": {
+    "unite_distance": "metres",
+    "precision_gps_requise": 15,
+    "theme_color": "#2c3e50"
+  },
+  "point_depart": {
+    "nom": "Panneau de l'Alliance",
+    "coords": {
+      "lat": 43.615093,
+      "lng": 1.073640
+    },
+    "texte_bienvenue": "Agent, votre mission commence ici. En août 2000, un pacte secret a été signé entre trois nations. Vous devez retrouver les codes de transmission avant qu'il ne soit trop tard.",
+    "consigne_action": "Localisez le panneau de la Fête des Jumelages pour commencer l'opération."
+  },
+  "etapes": [
+    {
+      "id": "etape-1-jumelages",
+      "nom": "Le Dossier Carballo",
+      "instruction": "Localisez le panneau de la Fête des Jumelages pour identifier nos alliés.",
+      "coords": {
+        "lat": 43.615093,
+        "lng": 1.073640
+      },
+      "validation_radius": 15,
+      "histoire": "Agent, votre mission commence ici. En août 2000, un pacte a été signé entre trois villes. Nous devons identifier la base espagnole impliquée dans cette opération.",
+      "enigme": {
+        "type": "TEXT",
+        "question": "D'après la liste des maires présents en 2000, de quelle ville vient M. Varella Rey ?",
+        "reponse": "Carballo",
+        "indice": "Regardez la colonne de droite sur le panneau blanc.",
+        "message_succes": "Code Carballo validé. Passez à la station de transmission française."
+      }
+    },
+    {
+      "id": "etape-2-pigeonnier",
+      "nom": "La Balise de Gascogne",
+      "instruction": "Rejoignez la tour carrée en pierre. C'est l'ancien centre de courrier.",
+      "coords": {
+        "lat": 43.615095,
+        "lng": 1.073319
+      },
+      "validation_radius": 15,
+      "histoire": "Ce pigeonnier servait autrefois de relais pour les messages cryptés. Vérifiez l'origine géographique exacte de cette balise sur sa plaque de pierre.",
+      "enigme": {
+        "type": "TEXT",
+        "question": "Quel nom de région est gravé tout en bas de la plaque au pied de l'édifice ?",
+        "reponse": "Gascogne",
+        "indice": "Lisez la dernière ligne de la petite plaque blanche au sol.",
+        "message_succes": "Localisation confirmée. Le signal nous dirige maintenant vers l'Italie."
+      }
+    },
+    {
+      "id": "etape-3-campanile",
+      "nom": "Le Relais de Vénétie",
+      "instruction": "Trouvez la tour rouge. C'est le point de surveillance italien.",
+      "coords": {
+        "lat": 43.615069,
+        "lng": 1.073336
+      },
+      "validation_radius": 15,
+      "histoire": "Ce Campanile est une réplique d'une tour de Motta di Livenza. Elle surveille les communications venant de l'Est.",
+      "enigme": {
+        "type": "TEXT",
+        "question": "Sur la plaque au sol, quelle province ou région italienne est mentionnée juste au-dessus du pays ?",
+        "reponse": "Venetie",
+        "indice": "Analysez la plaque située devant la tour rouge.",
+        "message_succes": "Transmission reçue. Un dernier code nous attend au terminal espagnol."
+      }
+    },
+    {
+      "id": "etape-4-horreo",
+      "nom": "Le Coffre-Fort Galicien",
+      "instruction": "Identifiez le bâtiment sur pilotis. C'est le centre de stockage sécurisé.",
+      "coords": {
+        "lat": 43.614898,
+        "lng": 1.073314
+      },
+      "validation_radius": 15,
+      "histoire": "L'Hórreo servait à protéger les ressources. Pour ouvrir le coffre final, identifiez le symbole de protection situé sur le toit.",
+      "enigme": {
+        "type": "TEXT",
+        "question": "Quel symbole se trouve à l'extrémité droite du toit, au-dessus de la porte ?",
+        "reponse": "Croix",
+        "indice": "Regardez le sommet du toit du côté de la petite porte en bois.",
+        "message_succes": "Mission accomplie. Le secret des Trois Nations est en sécurité."
+      }
+    }
+  ],
+  "final": {
+    "titre": "Accès Autorisé, Agent !",
+    "message": "Vous avez décodé les quatre points de l'alliance. Votre discrétion et votre sens de l'observation font de vous un expert de l'Opération L.I.S.L.E.",
+    "recompense": "Badge Agent Spécial débloqué 🕵️",
+    "code_validation": "LISLO-3NATIONS"
+  }
+}
