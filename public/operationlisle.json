@@ -19,7 +19,7 @@
   "config": {
     "unite_distance": "metres",
     "precision_gps_requise": 15,
-    "theme_color": "#00ff41" 
+    "theme_color": "#00ff41"
   },
   "etapes": [
     {
@@ -35,7 +35,7 @@
       "enigme": {
         "type": "NUMBER",
         "question": "Regardez la grande horloge du musée. Additionnez le nombre de cadrans solaires que vous voyez sur la façade du bâtiment au nombre de cloches visibles tout en haut. Quel est le code d'activation ?",
-        "reponse": "5",
+        "reponse": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
         "indice": "Il y a un cadran solaire bien visible sur la façade latérale et 4 cloches dans la petite tour au sommet.",
         "message_succes": "Code accepté. Connexion sécurisée établie avec l'Agence."
       }
@@ -46,14 +46,14 @@
       "instruction": "Infiltrez-vous sous les Halles de bois. Un message codé a été intercepté.",
       "coords": {
         "lat": 43.61225,
-        "lng": 1.08330
+        "lng": 1.0833
       },
       "validation_radius": 15,
       "histoire": "Les hackers utilisent les piliers pour cacher leurs micro-émetteurs. Un des piliers porte un marquage secret.",
       "enigme": {
         "type": "TEXT",
         "question": "Trouvez le pilier qui porte une petite plaque métallique avec un numéro. Si A=1, B=2, C=3... à quelle lettre correspond le dernier chiffre de ce numéro de série ?",
-        "reponse": "D",
+        "reponse": "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4",
         "indice": "Le chiffre sur la plaque est le 4. Compte dans l'alphabet : A, B, C...",
         "message_succes": "Lettre identifiée. Le mot de passe du pare-feu commence par un D."
       }
@@ -63,16 +63,21 @@
       "nom": "Surveillance Discrète",
       "instruction": "Descendez la rue de la République. Identifiez le point de passage n°27.",
       "coords": {
-        "lat": 43.61150,
-        "lng": 1.08410
+        "lat": 43.6115,
+        "lng": 1.0841
       },
       "validation_radius": 20,
       "histoire": "Nous soupçonnons une planque de hackers derrière une porte colorée. Restez vigilants.",
       "enigme": {
         "type": "CHOICE",
         "question": "Au numéro 27 de cette rue, de quelle couleur est la porte de l'immeuble qui semble surveiller le passage ?",
-        "options": ["Rouge", "Verte", "Bleue", "Noire"],
-        "reponse": "Rouge",
+        "options": [
+          "Rouge",
+          "Verte",
+          "Bleue",
+          "Noire"
+        ],
+        "reponse": "36d8324d1b77a342d518bb5005cd8065440109d827c57bc05601d60f6b684ff0",
         "indice": "C'est la couleur de l'alerte maximale !",
         "message_succes": "Cible identifiée. Nous avons placé cet immeuble sous écoute."
       }
@@ -83,14 +88,14 @@
       "instruction": "Rendez-vous sur le pont de briques qui traverse la rivière.",
       "coords": {
         "lat": 43.61105,
-        "lng": 1.08450
+        "lng": 1.0845
       },
       "validation_radius": 15,
       "histoire": "Le signal des hackers est plus fort près de l'eau. Le pont sert d'antenne géante.",
       "enigme": {
         "type": "NUMBER",
         "question": "Comptez le nombre de lampadaires noirs présents sur le pont. Multipliez ce nombre par 2 pour obtenir la fréquence de brouillage.",
-        "reponse": "8",
+        "reponse": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3",
         "indice": "Il y a 4 lampadaires sur le pont. Le calcul est simple : 4 x 2.",
         "message_succes": "Fréquence neutralisée. Le signal des hackers faiblit !"
       }
@@ -101,14 +106,14 @@
       "instruction": "Foncez vers la base du Viaduc, là où le virus a été injecté dans le système.",
       "coords": {
         "lat": 43.61055,
-        "lng": 1.08720
+        "lng": 1.0872
       },
       "validation_radius": 30,
       "histoire": "Le serveur central est caché dans les fondations de briques. C'est votre dernière chance !",
       "enigme": {
         "type": "TEXT",
         "question": "Regardez les arches du viaduc. Une inscription ou un symbole se cache souvent sur les piliers. Quel est le mot gravé sur la plaque commémorative proche du passage ?",
-        "reponse": "Viaduc",
+        "reponse": "450db22269555a288973703c391b647f3478a279942a2796df76f00f62cb0ad1",
         "indice": "C'est le nom même de cette immense construction en briques !",
         "message_succes": "VIRUS DÉTRUIT. Mission accomplie, Agents. L'Isle-Jourdain est en sécurité."
       }

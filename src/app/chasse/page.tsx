@@ -22,6 +22,7 @@ function ChasseContent() {
   const parcoursFile = searchParams.get("parcours") || "mvp";
 
   const [parcours, setParcours] = useState<Parcours | null>(null);
+  const [loadError, setLoadError] = useState(false);
   const [introDismissed, setIntroDismissed] = useState(false);
   const { position, error: geoError } = useGeolocation();
 
@@ -32,8 +33,12 @@ function ChasseContent() {
 
   useEffect(() => {
     fetch(`/${parcoursFile}.json`)
-      .then((r) => r.json())
-      .then((d: Parcours) => setParcours(d));
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((d: Parcours) => setParcours(d))
+      .catch(() => setLoadError(true));
   }, [parcoursFile]);
 
   useEffect(() => {
@@ -43,6 +48,20 @@ function ChasseContent() {
     }
   }, [parcoursFile]);
 
+
+  if (loadError) {
+    return (
+      <div className="min-h-dvh flex flex-col items-center justify-center gap-4 bg-emerald-50 px-6 text-center">
+        <span className="text-4xl">⚠️</span>
+        <p className="text-sm font-semibold text-gray-700">
+          Impossible de charger cette aventure. Vérifie ta connexion et réessaie.
+        </p>
+        <Link href="/" className="text-sm font-bold text-emerald-700 underline">
+          Retour à l&apos;accueil
+        </Link>
+      </div>
+    );
+  }
 
   if (!parcours || !isLoaded) {
     return (

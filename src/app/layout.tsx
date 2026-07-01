@@ -12,15 +12,35 @@ export const viewport: Viewport = {
   themeColor: "#2ecc71",
 };
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const title = "L'Isle aux énigmes";
+const description =
+  "Chasse au trésor géolocalisée autour du lac de L'Isle-Jourdain";
+
 export const metadata: Metadata = {
-  title: "L'Isle aux énigmes",
-  description:
-    "Chasse au trésor géolocalisée autour du lac de L'Isle-Jourdain",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
     title: "Isle Enigmes",
+  },
+  openGraph: {
+    title,
+    description,
+    url: siteUrl,
+    siteName: title,
+    locale: "fr_FR",
+    type: "website",
+    images: [{ url: "/icons/boussole.jpg", width: 1920, height: 1280 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/icons/boussole.jpg"],
   },
 };
 

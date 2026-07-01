@@ -14,7 +14,10 @@
   },
   "point_depart": {
     "nom": "Capitainerie (Office de Tourisme)",
-    "coords": { "lat": 43.615211, "lng": 1.074095 },
+    "coords": {
+      "lat": 43.615211,
+      "lng": 1.074095
+    },
     "texte_bienvenue": "Coucou les petits lutins ! Je suis la Fée Islo. Le petit monstre a caché mes gâteaux magiques autour du lac. Prêts pour une chasse aux trésors ?",
     "consigne_action": "Regardez le grand panneau bleu avec la carte du lac juste devant vous."
   },
@@ -23,14 +26,21 @@
       "id": "couleur-eau",
       "nom": "La Peinture du Monstre",
       "instruction": "Regardez le dessin du lac sur le panneau.",
-      "coords": { "lat": 43.615211, "lng": 1.074095 },
+      "coords": {
+        "lat": 43.615211,
+        "lng": 1.074095
+      },
       "validation_radius": 15,
       "histoire": "Le monstre a voulu peindre le lac ! De quelle couleur est l'eau sur le dessin ?",
       "enigme": {
         "type": "CHOICE",
         "question": "L'eau sur le dessin est-elle...",
-        "options": ["Rouge", "Bleue", "Verte"],
-        "reponse": "Bleue",
+        "options": [
+          "Rouge",
+          "Bleue",
+          "Verte"
+        ],
+        "reponse": "513c88bf685b84082bceee5712720c39428ba688f321c5ab83ff8358d047ce1d",
         "indice": "C'est la couleur du ciel !",
         "message_succes": "Bravo ! On a retrouvé le sirop de bleuets."
       }
@@ -39,13 +49,16 @@
       "id": "pont-bois",
       "nom": "Le Pont des Lutins",
       "instruction": "Suivez le chemin vers le petit pont en bois.",
-      "coords": { "lat": 43.61580, "lng": 1.07880 },
+      "coords": {
+        "lat": 43.6158,
+        "lng": 1.0788
+      },
       "validation_radius": 15,
       "histoire": "Traversez le pont sans réveiller le monstre qui dort dessous !",
       "enigme": {
         "type": "NUMBER",
         "question": "Combien de grosses barres de bois touchent le sol quand vous marchez sur le pont ? (Elles sont allongées sous vos pieds)",
-        "reponse": "3",
+        "reponse": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
         "indice": "Comptez avec papa ou maman : 1, 2... et 3 !",
         "message_succes": "Super ! Vous n'avez pas fait de bruit."
       }
@@ -54,14 +67,21 @@
       "id": "skate-bosses",
       "nom": "Le Dos du Monstre",
       "instruction": "Regardez le Skatepark (la zone avec les bosses).",
-      "coords": { "lat": 43.61825, "lng": 1.07375 },
+      "coords": {
+        "lat": 43.61825,
+        "lng": 1.07375
+      },
       "validation_radius": 25,
       "histoire": "On dirait le dos d'un énorme dinosaure gris !",
       "enigme": {
         "type": "CHOICE",
         "question": "De quelle couleur sont les grosses bosses du skatepark ?",
-        "options": ["Jaunes", "Grises", "Roses"],
-        "reponse": "Grises",
+        "options": [
+          "Jaunes",
+          "Grises",
+          "Roses"
+        ],
+        "reponse": "97ee4686b2e67c28d017bf2aabcef28ac790214e228ca05bdb7b9b6abfd653c3",
         "indice": "C'est la couleur d'un éléphant.",
         "message_succes": "Gagné ! On a retrouvé les gâteaux."
       }
@@ -70,13 +90,16 @@
       "id": "palais-final",
       "nom": "Le Palais de la Fée",
       "instruction": "Allez vite vers l'Aire de Jeux (les balançoires et les toboggans).",
-      "coords": { "lat": 43.61550, "lng": 1.08050 },
+      "coords": {
+        "lat": 43.6155,
+        "lng": 1.0805
+      },
       "validation_radius": 30,
       "histoire": "C'est ici que les fées habitent ! Cherchez le plus grand toboggan.",
       "enigme": {
         "type": "CHOICE",
         "question": "De quelle couleur est le grand toboggan (ou la structure principale) ?",
-        "reponse": "Jaune",
+        "reponse": "d0a127e3c2132be91bae5e20726555f966963ebcf506a8b572dee1d8be84a4c4",
         "indice": "C'est la couleur du soleil.",
         "message_succes": "VICTOIRE ! Le goûter peut commencer au pied du toboggan !"
       }
