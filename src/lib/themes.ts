@@ -366,3 +366,41 @@ export function getTheme(parcoursId: string): Theme {
   if (parcoursId === "islo-kids-lac-001" || parcoursId === "islo-kids-alliance-001") return FAIRY_THEME;
   return DEFAULT_THEME;
 }
+
+/**
+ * Photo de fond + overlay par parcours (uniquement les parcours qui en ont une).
+ * overlayIntro est légèrement plus clair que overlayGame pour laisser voir la photo
+ * sur l'écran d'introduction, avant que le texte des énigmes ne demande plus de contraste.
+ */
+interface ParcoursPhoto {
+  photo: string;
+  overlayGame: string;
+  overlayIntro: string;
+}
+
+const PARCOURS_PHOTOS: Record<string, ParcoursPhoto> = {
+  "islo-hist-710-001": {
+    photo: "/icons/livres.jpg",
+    overlayGame: "rgba(120, 80, 20, 0.80)",
+    overlayIntro: "rgba(120, 80, 20, 0.72)",
+  },
+  "islo-kids-lac-001": {
+    photo: "/icons/fée.jpg",
+    overlayGame: "rgba(140, 50, 140, 0.78)",
+    overlayIntro: "rgba(160, 60, 160, 0.68)",
+  },
+  "islo-spy-007": {
+    photo: "/icons/top_secret.jpg",
+    overlayGame: "rgba(5, 20, 5, 0.82)",
+    overlayIntro: "rgba(5, 20, 5, 0.78)",
+  },
+  "islo-hist-002": {
+    photo: "/icons/campanaire.jpg",
+    overlayGame: "rgba(120, 80, 20, 0.80)",
+    overlayIntro: "rgba(120, 80, 20, 0.72)",
+  },
+};
+
+export function getParcoursPhoto(parcoursId: string): ParcoursPhoto | undefined {
+  return PARCOURS_PHOTOS[parcoursId];
+}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Parcours } from "@/lib/types";
 import { useTheme } from "@/lib/ThemeContext";
+import { getParcoursPhoto } from "@/lib/themes";
 import { useGeolocation } from "@/hooks/useGeolocation";
 import { haversineDistance } from "@/lib/geo";
 
@@ -164,21 +165,9 @@ export default function IntroScreen({ parcours, onStart }: IntroScreenProps) {
     ? haversineDistance(position, targetCoords)
     : null;
 
-  const photoMap: Record<string, string> = {
-    "islo-hist-710-001": "/icons/livres.jpg",
-    "islo-kids-lac-001": "/icons/fée.jpg",
-    "islo-spy-007":      "/icons/top_secret.jpg",
-    "islo-hist-002":     "/icons/campanaire.jpg",
-  };
-  const photo = photoMap[parcours.id];
-
-  const overlayMap: Record<string, string> = {
-    "islo-hist-710-001": "rgba(120, 80, 20, 0.72)",
-    "islo-kids-lac-001": "rgba(160, 60, 160, 0.68)",
-    "islo-spy-007":      "rgba(5, 20, 5, 0.78)",
-    "islo-hist-002":     "rgba(120, 80, 20, 0.72)",
-  };
-  const overlay = overlayMap[parcours.id] ?? "rgba(0,0,0,0.65)";
+  const parcoursPhoto = getParcoursPhoto(parcours.id);
+  const photo = parcoursPhoto?.photo;
+  const overlay = parcoursPhoto?.overlayIntro ?? "rgba(0,0,0,0.65)";
 
   return (
     <div className={`min-h-dvh flex flex-col ${t.fontClass} relative`}>
@@ -193,7 +182,7 @@ export default function IntroScreen({ parcours, onStart }: IntroScreenProps) {
       {/* Header */}
       <div className="relative z-10 shrink-0 px-4 pt-3 pb-2 flex items-center gap-3 backdrop-blur-sm"
         style={{ background: "rgba(0,0,0,0.25)" }}>
-        <Link href="/" className="text-white/70 active:opacity-70 transition-opacity">
+        <Link href="/" aria-label="Retour à l'accueil" className="text-white/70 active:opacity-70 transition-opacity">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
             <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
           </svg>

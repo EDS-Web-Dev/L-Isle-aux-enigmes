@@ -15,26 +15,23 @@ interface UseProgressionReturn extends Progression {
 
 const INITIAL: Progression = { currentStepIndex: 0, completedSteps: [] };
 
+function readProgression(storageKey: string): Progression {
+  if (typeof window === "undefined") return INITIAL;
+  try {
+    const raw = localStorage.getItem(storageKey);
+    if (raw) return JSON.parse(raw);
+  } catch {
+    // ignore corrupted data
+  }
+  return INITIAL;
+}
+
 export function useProgression(
   totalSteps: number,
   storageKey = "islo-progression"
 ): UseProgressionReturn {
-  const [state, setState] = useState<Progression>(INITIAL);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  // Load from localStorage on mount
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(storageKey);
-      if (raw) {
-        const parsed: Progression = JSON.parse(raw);
-        setState(parsed);
-      }
-    } catch {
-      // ignore corrupted data
-    }
-    setIsLoaded(true);
-  }, [storageKey]);
+  const [state, setState] = useState<Progression>(() => readProgression(storageKey));
+  const isLoaded = typeof window !== "undefined";
 
   // Persist to localStorage on change
   useEffect(() => {
