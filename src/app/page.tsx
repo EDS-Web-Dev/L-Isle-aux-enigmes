@@ -263,17 +263,6 @@ function Compass({ heading, targetBearing, targetEmoji }: {
   );
 }
 
-/* ── DifficultyStars ────────────────────────────────── */
-function DifficultyStars({ value, color }: { value: number; color: string }) {
-  return (
-    <span className="flex gap-0.5">
-      {[1, 2, 3].map((i) => (
-        <span key={i} className="text-sm" style={{ color: i <= value ? color : "rgba(0,0,0,0.15)" }}>★</span>
-      ))}
-    </span>
-  );
-}
-
 /* ── Illustrations SVG par thème ───────────────────── */
 function IllustrationHistoire({ filter }: { filter: string }) {
   return (
@@ -569,6 +558,7 @@ function MissionCard({ data, meta, progress, distM, alwaysAccessible = false }: 
 /* ── Page ───────────────────────────────────────────── */
 export default function Home() {
   const [adventures, setAdventures] = useState<(AdventureInfo | null)[]>(ADVENTURES.map(() => null));
+  const [loadErrors, setLoadErrors] = useState<boolean[]>(ADVENTURES.map(() => false));
   const [progresses, setProgresses] = useState<number[]>(ADVENTURES.map(() => 0));
   const [userPos, setUserPos] = useState<{ lat: number; lng: number } | null>(null);
   const [geoStatus, setGeoStatus] = useState<"idle" | "loading" | "ok" | "denied">("idle");
@@ -583,9 +573,15 @@ export default function Home() {
   useEffect(() => {
     ADVENTURES.forEach((meta, i) => {
       fetch(`/${meta.file}.json`)
-        .then((r) => r.json())
+        .then((r) => {
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          return r.json();
+        })
         .then((d: AdventureInfo) =>
           setAdventures((prev) => { const n = [...prev]; n[i] = d; return n; })
+        )
+        .catch(() =>
+          setLoadErrors((prev) => { const n = [...prev]; n[i] = true; return n; })
         );
       try {
         const raw = localStorage.getItem(`islo-progression-${meta.file}`);
@@ -906,6 +902,14 @@ const cardWidth = (el.scrollWidth - padding * 2) / ADVENTURES.length;
             }}>
             {ADVENTURES.map((meta, i) => {
               const data = adventures[i];
+              if (loadErrors[i]) return (
+                <div key={meta.file} className="shrink-0 snap-center w-[80vw] max-w-sm h-64 rounded-3xl flex items-center justify-center text-center px-6"
+                  style={{ background: "rgba(196,74,58,0.15)" }}>
+                  <p className="text-xs font-semibold" style={{ color: "#C44A3A" }}>
+                    ⚠️ Impossible de charger cette aventure. Vérifie ta connexion.
+                  </p>
+                </div>
+              );
               if (!data) return (
                 <div key={meta.file} className="shrink-0 snap-center w-[80vw] max-w-sm h-64 rounded-3xl animate-pulse" style={{ background: "rgba(196,74,58,0.15)" }} />
               );

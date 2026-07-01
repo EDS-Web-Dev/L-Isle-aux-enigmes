@@ -20,6 +20,12 @@ function useConfetti(canvasRef: React.RefObject<HTMLCanvasElement | null>, color
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
+    function handleResize() {
+      canvas!.width = window.innerWidth;
+      canvas!.height = window.innerHeight;
+    }
+    window.addEventListener("resize", handleResize);
+
     const particles = Array.from({ length: 120 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height - canvas.height,
@@ -54,7 +60,10 @@ function useConfetti(canvasRef: React.RefObject<HTMLCanvasElement | null>, color
     }
     draw();
 
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", handleResize);
+    };
   }, [canvasRef, colors]);
 }
 
@@ -79,7 +88,7 @@ export default function FinalScreen({ final, onReset }: FinalScreenProps) {
 
         {id === "spy" && (
           <p className="text-[#00ff41]/40 text-xs font-mono tracking-widest uppercase">
-            // mission_status: complete
+            {"// mission_status: complete"}
           </p>
         )}
 

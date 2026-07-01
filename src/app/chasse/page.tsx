@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Parcours } from "@/lib/types";
-import { getTheme } from "@/lib/themes";
+import { getTheme, getParcoursPhoto } from "@/lib/themes";
 import { ThemeProvider } from "@/lib/ThemeContext";
 import { useGeolocation } from "@/hooks/useGeolocation";
 import { useProgression } from "@/hooks/useProgression";
@@ -23,8 +23,13 @@ function ChasseContent() {
 
   const [parcours, setParcours] = useState<Parcours | null>(null);
   const [loadError, setLoadError] = useState(false);
-  const [introDismissed, setIntroDismissed] = useState(false);
+  const [dismissedManually, setDismissedManually] = useState(false);
   const { position, error: geoError } = useGeolocation();
+
+  const introSeenKey = `islo-intro-seen-${parcoursFile}`;
+  const introDismissed =
+    dismissedManually ||
+    (typeof window !== "undefined" && sessionStorage.getItem(introSeenKey) === "1");
 
   const totalSteps = parcours?.etapes.length ?? 0;
   const storageKey = `islo-progression-${parcoursFile}`;
@@ -40,14 +45,6 @@ function ChasseContent() {
       .then((d: Parcours) => setParcours(d))
       .catch(() => setLoadError(true));
   }, [parcoursFile]);
-
-  useEffect(() => {
-    const key = `islo-intro-seen-${parcoursFile}`;
-    if (sessionStorage.getItem(key)) {
-      setIntroDismissed(true);
-    }
-  }, [parcoursFile]);
-
 
   if (loadError) {
     return (
@@ -85,8 +82,8 @@ function ChasseContent() {
         <IntroScreen
           parcours={parcours}
           onStart={() => {
-            sessionStorage.setItem(`islo-intro-seen-${parcoursFile}`, "1");
-            setIntroDismissed(true);
+            sessionStorage.setItem(introSeenKey, "1");
+            setDismissedManually(true);
           }}
         />
       </ThemeProvider>
@@ -103,20 +100,9 @@ function ChasseContent() {
 
   const currentEtape = parcours.etapes[currentStepIndex];
 
-  const photoMap: Record<string, string> = {
-    "islo-hist-710-001": "/icons/livres.jpg",
-    "islo-kids-lac-001": "/icons/fée.jpg",
-    "islo-spy-007":      "/icons/top_secret.jpg",
-    "islo-hist-002":     "/icons/campanaire.jpg",
-  };
-  const overlayMap: Record<string, string> = {
-    "islo-hist-710-001": "rgba(120, 80, 20, 0.80)",
-    "islo-kids-lac-001": "rgba(140, 50, 140, 0.78)",
-    "islo-spy-007":      "rgba(5, 20, 5, 0.82)",
-    "islo-hist-002":     "rgba(120, 80, 20, 0.80)",
-  };
-  const photo = photoMap[parcours.id];
-  const overlay = overlayMap[parcours.id];
+  const parcoursPhoto = getParcoursPhoto(parcours.id);
+  const photo = parcoursPhoto?.photo;
+  const overlay = parcoursPhoto?.overlayGame;
 
   return (
     <ThemeProvider theme={theme}>
@@ -132,7 +118,7 @@ function ChasseContent() {
         {/* Title bar */}
         <div className={`relative z-10 shrink-0 px-4 pt-3 pb-2 flex items-center gap-3 backdrop-blur-sm`}
           style={{ background: "rgba(0,0,0,0.25)" }}>
-          <Link href="/" className={`${theme.backColor} active:opacity-70 transition-opacity`}>
+          <Link href="/" aria-label="Retour à l'accueil" className={`${theme.backColor} active:opacity-70 transition-opacity`}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
               <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
             </svg>
