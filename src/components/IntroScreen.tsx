@@ -230,6 +230,9 @@ export default function IntroScreen({ parcours, onStart }: IntroScreenProps) {
 
       {/* Start button */}
       <div className="relative z-10 shrink-0 px-6 pb-8 pt-4">
+        <p className={`text-[11px] text-center mb-3 leading-relaxed ${photo ? "text-white/70" : t.subtitleColor}`}>
+          ⚠️ Reste attentif à ton environnement en marchant : fais attention à la circulation, aux autres passants et au bord du lac.
+        </p>
         <button
           onClick={onStart}
           className={`w-full ${t.submitBg} ${t.submitText} font-bold text-lg py-4 rounded-2xl shadow-lg active:scale-95 transition-transform`}
