@@ -1013,6 +1013,9 @@ const cardWidth = (el.scrollWidth - padding * 2) / ADVENTURES.length;
           ))}
         </div>
         <p className="text-[9px] mt-4" style={{ color: "rgba(242,212,121,0.3)" }}>© 2026 — Tous droits réservés</p>
+        <Link href="/mentions-legales" className="text-[9px] underline inline-block mt-1" style={{ color: "rgba(242,212,121,0.4)" }}>
+          Mentions légales
+        </Link>
       </footer>
     </main>
   );
