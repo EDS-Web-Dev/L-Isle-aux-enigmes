@@ -12,7 +12,16 @@ export const viewport: Viewport = {
   themeColor: "#2ecc71",
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+/**
+ * En production sur Vercel, VERCEL_PROJECT_PRODUCTION_URL (domaine stable du
+ * projet) est fourni automatiquement, sans configuration manuelle nécessaire.
+ */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL &&
+    `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
+  (process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`) ||
+  "http://localhost:3000";
 const title = "L'Isle aux énigmes";
 const description =
   "Chasse au trésor géolocalisée autour du lac de L'Isle-Jourdain";
