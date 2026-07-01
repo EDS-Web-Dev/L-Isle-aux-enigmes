@@ -16,7 +16,7 @@
     "nom": "Panneau des Jumelages",
     "coords": {
       "lat": 43.615093,
-      "lng": 1.073640
+      "lng": 1.07364
     },
     "texte_bienvenue": "Bienvenue, petit explorateur ! Tu vas traverser la France, l'Italie et l'Espagne en faisant le tour du lac. Prêt pour l'aventure ?",
     "consigne_action": "Rends-toi devant le grand panneau blanc de la Fête des Jumelages pour commencer !"
@@ -28,15 +28,19 @@
       "instruction": "Trouve le grand panneau blanc qui parle de la Fête des Jumelages.",
       "coords": {
         "lat": 43.615093,
-        "lng": 1.073640
+        "lng": 1.07364
       },
       "validation_radius": 20,
       "histoire": "C'est ici que tout commence ! Trois pays se sont donné la main pour créer cette alliance magique au bord du lac.",
       "enigme": {
         "type": "CHOICE",
         "question": "Combien de noms commencent par la lettre 'M.' sur la liste des maires ?",
-        "options": ["1", "2", "3"],
-        "reponse": "3",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ],
+        "reponse": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
         "indice": "Compte les 'M.' avec un point juste après.",
         "message_succes": "Bravo ! Les 3 pays sont réunis. En route pour la France !"
       }
@@ -54,8 +58,11 @@
       "enigme": {
         "type": "CHOICE",
         "question": "Quel oiseau habitait ici pour porter les messages : un Canard ou un Pigeon ?",
-        "options": ["Canard", "Pigeon"],
-        "reponse": "Pigeon",
+        "options": [
+          "Canard",
+          "Pigeon"
+        ],
+        "reponse": "9f79fd6cdc880e3914ac75b50d71222d29d4e5e8680bc14e18e5ef28c1981484",
         "indice": "Le nom de cette petite tour (Pigeonnier) commence comme cet oiseau !",
         "message_succes": "Excellent ! Le message est envoyé. Direction l'Italie !"
       }
@@ -73,8 +80,12 @@
       "enigme": {
         "type": "CHOICE",
         "question": "De quelle couleur est le chapeau (le toit) pointu de cette tour ?",
-        "options": ["Vert", "Jaune", "Rouge"],
-        "reponse": "Rouge",
+        "options": [
+          "Vert",
+          "Jaune",
+          "Rouge"
+        ],
+        "reponse": "36d8324d1b77a342d518bb5005cd8065440109d827c57bc05601d60f6b684ff0",
         "indice": "C'est la couleur des fraises ou du camion de pompiers.",
         "message_succes": "Bien vu ! La cloche a sonné. Finissons le voyage en Espagne !"
       }
@@ -92,8 +103,12 @@
       "enigme": {
         "type": "CHOICE",
         "question": "Combien de pieds (piliers blancs) vois-tu sous cette maison pour la porter ?",
-        "options": ["2", "4", "6"],
-        "reponse": "6",
+        "options": [
+          "2",
+          "4",
+          "6"
+        ],
+        "reponse": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683",
         "indice": "Compte les piliers : il y en a 3 devant et 3 derrière.",
         "message_succes": "Génial ! Tu as trouvé tous les secrets des 3 pays."
       }

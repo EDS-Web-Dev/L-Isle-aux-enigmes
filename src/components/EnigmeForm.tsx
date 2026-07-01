@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Enigme } from "@/lib/types";
 import { useTheme } from "@/lib/ThemeContext";
+import { hashAnswer } from "@/lib/hash";
 
 interface EnigmeFormProps {
   enigme: Enigme;
@@ -14,19 +15,20 @@ export default function EnigmeForm({ enigme, onCorrect }: EnigmeFormProps) {
   const [answer, setAnswer] = useState("");
   const [showHint, setShowHint] = useState(false);
   const [feedback, setFeedback] = useState<"success" | "error" | null>(null);
+  const [checking, setChecking] = useState(false);
 
-  function normalize(s: string) {
-    return s.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  }
-
-  function isCorrect(value: string) {
+  async function isCorrect(value: string) {
     const accepted = Array.isArray(enigme.reponse) ? enigme.reponse : [enigme.reponse];
-    return accepted.some((r) => normalize(value) === normalize(r));
+    const hashed = await hashAnswer(value);
+    return accepted.includes(hashed);
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (isCorrect(answer)) {
+    setChecking(true);
+    const correct = await isCorrect(answer);
+    setChecking(false);
+    if (correct) {
       setFeedback("success");
       if (navigator.vibrate) navigator.vibrate(200);
     } else {
@@ -36,9 +38,12 @@ export default function EnigmeForm({ enigme, onCorrect }: EnigmeFormProps) {
     }
   }
 
-  function selectChoice(option: string) {
+  async function selectChoice(option: string) {
     setAnswer(option);
-    if (isCorrect(option)) {
+    setChecking(true);
+    const correct = await isCorrect(option);
+    setChecking(false);
+    if (correct) {
       setFeedback("success");
       if (navigator.vibrate) navigator.vibrate(200);
     } else {
@@ -98,7 +103,8 @@ export default function EnigmeForm({ enigme, onCorrect }: EnigmeFormProps) {
             <button
               key={opt}
               onClick={() => selectChoice(opt)}
-              className={`py-4 px-3 rounded-2xl text-base font-semibold border-2 transition-all active:scale-95 text-center leading-snug ${
+              disabled={checking}
+              className={`py-4 px-3 rounded-2xl text-base font-semibold border-2 transition-all active:scale-95 text-center leading-snug disabled:opacity-40 ${
                 answer === opt && feedback === "error"
                   ? `${t.errorBorder} ${t.errorBg} ${t.errorText}`
                   : `${t.choiceBorder} ${t.choiceBg} ${t.choiceText}`
@@ -121,7 +127,7 @@ export default function EnigmeForm({ enigme, onCorrect }: EnigmeFormProps) {
           />
           <button
             type="submit"
-            disabled={!answer.trim()}
+            disabled={!answer.trim() || checking}
             className={`w-full ${t.submitBg} ${t.submitText} py-4 rounded-2xl font-bold text-base
               disabled:opacity-40 active:scale-95 transition-all shadow-sm`}
           >

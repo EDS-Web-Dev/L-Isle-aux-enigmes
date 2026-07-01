@@ -16,7 +16,7 @@
     "nom": "Panneau de l'Alliance",
     "coords": {
       "lat": 43.615093,
-      "lng": 1.073640
+      "lng": 1.07364
     },
     "texte_bienvenue": "Agent, votre mission commence ici. En août 2000, un pacte secret a été signé entre trois nations. Vous devez retrouver les codes de transmission avant qu'il ne soit trop tard.",
     "consigne_action": "Localisez le panneau de la Fête des Jumelages pour commencer l'opération."
@@ -28,14 +28,14 @@
       "instruction": "Localisez le panneau de la Fête des Jumelages pour identifier nos alliés.",
       "coords": {
         "lat": 43.615093,
-        "lng": 1.073640
+        "lng": 1.07364
       },
       "validation_radius": 15,
       "histoire": "Agent, votre mission commence ici. En août 2000, un pacte a été signé entre trois villes. Nous devons identifier la base espagnole impliquée dans cette opération.",
       "enigme": {
         "type": "TEXT",
         "question": "D'après la liste des maires présents en 2000, de quelle ville vient M. Varella Rey ?",
-        "reponse": "Carballo",
+        "reponse": "36290889a68993d2bcdcad6d075ea1ba336cd8f628358aac2e1d6d4bf7a8fd6b",
         "indice": "Regardez la colonne de droite sur le panneau blanc.",
         "message_succes": "Code Carballo validé. Passez à la station de transmission française."
       }
@@ -53,7 +53,7 @@
       "enigme": {
         "type": "TEXT",
         "question": "Quel nom de région est gravé tout en bas de la plaque au pied de l'édifice ?",
-        "reponse": "Gascogne",
+        "reponse": "8a4ec3d39002e15b59eb06c4444691ff6bb9613505789de99bbd21476012341a",
         "indice": "Lisez la dernière ligne de la petite plaque blanche au sol.",
         "message_succes": "Localisation confirmée. Le signal nous dirige maintenant vers l'Italie."
       }
@@ -71,7 +71,7 @@
       "enigme": {
         "type": "TEXT",
         "question": "Sur la plaque au sol, quelle province ou région italienne est mentionnée juste au-dessus du pays ?",
-        "reponse": "Venetie",
+        "reponse": "a09ff5e1a263e1ef1972a4036e59b6aa5eb09a939d0dda7b89d87fb317422dbf",
         "indice": "Analysez la plaque située devant la tour rouge.",
         "message_succes": "Transmission reçue. Un dernier code nous attend au terminal espagnol."
       }
@@ -89,7 +89,7 @@
       "enigme": {
         "type": "TEXT",
         "question": "Quel symbole se trouve à l'extrémité droite du toit, au-dessus de la porte ?",
-        "reponse": "Croix",
+        "reponse": "40f4a2fa6cb12ea2aa517fe373e8367318cf7ba5791f1b0d87ed31d194a3f152",
         "indice": "Regardez le sommet du toit du côté de la petite porte en bois.",
         "message_succes": "Mission accomplie. Le secret des Trois Nations est en sécurité."
       }

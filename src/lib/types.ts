@@ -6,6 +6,7 @@ export interface Coords {
 export interface Enigme {
   type: "TEXT" | "NUMBER" | "CHOICE";
   question: string;
+  /** SHA-256 hex digest(s) de la réponse normalisée (voir lib/hash.ts), pas la réponse en clair. */
   reponse: string | string[];
   indice: string;
   message_succes: string;

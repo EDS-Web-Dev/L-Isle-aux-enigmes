@@ -1,110 +1,122 @@
 {
-    "id": "parcours-loulou-306",
-    "version": "1.0",
-    "titre": "Loulou et la Baguette Magique",
-    "description": "Aidez Loulou le petit monstre à retrouver sa magie égarée au bord du lac.",
-    "age_cible": "3-6 ans",
-    "theme": "FEERIE",
-    "difficulte": 1,
-    "point_depart": "Capitainerie du Lac",
-    "config": {
-      "distance_activation": 20,
-      "unite": "metres",
-      "mode": "radar"
+  "id": "parcours-loulou-306",
+  "version": "1.0",
+  "titre": "Loulou et la Baguette Magique",
+  "description": "Aidez Loulou le petit monstre à retrouver sa magie égarée au bord du lac.",
+  "ville": "L'Isle-Jourdain",
+  "difficulty": 1,
+  "age_conseille": "3-6 ans",
+  "temps_estime": "20-30 min",
+  "config": {
+    "unite_distance": "metres",
+    "precision_gps_requise": 20,
+    "theme_color": "#9b59b6"
+  },
+  "point_depart": {
+    "nom": "Capitainerie du Lac",
+    "coords": {
+      "lat": 43.61517,
+      "lng": 1.07871
     },
-    "etapes": [
-      {
-        "id": "etape-1-panneau",
-        "nom": "La Mare aux Couleurs",
-        "instruction": "Dirige-toi vers le grand panneau bleu à l'entrée du lac.",
-        "coords": {
-          "lat": 43.61517,
-          "lng": 1.07871
-        },
-        "histoire": "Loulou a renversé de la peinture magique sur la carte ! Pour commencer, il faut retrouver la couleur de l'eau.",
-        "enigme": {
-          "type": "CHOIX_MULTIPLE",
-          "question": "De quelle couleur est l'eau sur le grand dessin ?",
-          "options": ["Rouge", "Bleu", "Jaune"],
-          "reponse": "Bleu",
-          "indice": "C'est la couleur du ciel quand il n'y a pas de nuages.",
-          "message_succes": "Bravo ! Tu as retrouvé la première trace de magie !"
-        },
-        "visuel": {
-          "icon": "3d-palette",
-          "color_accent": "#3498db"
-        }
+    "texte_bienvenue": "Coucou petit aventurier ! Je suis Loulou, le petit monstre du lac. J'ai perdu ma baguette magique quelque part par ici... Tu veux bien m'aider à la retrouver ?",
+    "consigne_action": "Rends-toi devant le grand panneau bleu à l'entrée du lac pour commencer l'aventure."
+  },
+  "etapes": [
+    {
+      "id": "etape-1-panneau",
+      "nom": "La Mare aux Couleurs",
+      "instruction": "Dirige-toi vers le grand panneau bleu à l'entrée du lac.",
+      "coords": {
+        "lat": 43.61517,
+        "lng": 1.07871
       },
-      {
-        "id": "etape-2-pigeonnier",
-        "nom": "Le Nid des Messagers",
-        "instruction": "Cherche la toute petite maison avec un toit en tuiles sur l'herbe.",
-        "coords": {
-          "lat": 43.61540,
-          "lng": 1.07890
-        },
-        "histoire": "Loulou pense que sa baguette est cachée dans cette tour miniature. Mais attention à ne pas réveiller les habitants !",
-        "enigme": {
-          "type": "CHOIX_MULTIPLE",
-          "question": "Qui habite dans cette petite tour : des Éléphants ou des Oiseaux ?",
-          "options": ["Éléphants", "Oiseaux"],
-          "reponse": "Oiseaux",
-          "indice": "Ce sont des petits animaux qui volent et font 'Cui-cui'.",
-          "message_succes": "C'est ça ! Les oiseaux t'ont montré le chemin vers la grande tour."
-        },
-        "visuel": {
-          "icon": "3d-oiseau",
-          "color_accent": "#e67e22"
-        }
-      },
-      {
-        "id": "etape-3-campanile",
-        "nom": "Le Chapeau de la Tour",
-        "instruction": "Regarde la tour très haute au fond qui ressemble à un clocher.",
-        "coords": {
-          "lat": 43.61560,
-          "lng": 1.07920
-        },
-        "histoire": "La baguette a brillé tout en haut de cette tour ! Elle est juste sous le chapeau pointu.",
-        "enigme": {
-          "type": "CHOIX_MULTIPLE",
-          "question": "De quelle couleur est le chapeau (le toit) de la tour ?",
-          "options": ["Vert", "Noir", "Rouge"],
-          "reponse": "Rouge",
-          "indice": "C'est la couleur des fraises bien sucrées.",
-          "message_succes": "Magnifique ! Tu vois presque la baguette briller !"
-        },
-        "visuel": {
-          "icon": "3d-tour",
-          "color_accent": "#e74c3c"
-        }
-      },
-      {
-        "id": "etape-4-puits",
-        "nom": "Le Puits aux Vœux",
-        "instruction": "Trouve le grand rond en briques rouges qui ressemble à une marmite.",
-        "coords": {
-          "lat": 43.61580,
-          "lng": 1.07950
-        },
-        "histoire": "La baguette est tombée dans le puits ! Pour la faire remonter, il faut identifier la forme secrète tout en haut du fer noir.",
-        "enigme": {
-          "type": "CHOIX_MULTIPLE",
-          "question": "Quelle forme vois-tu tout en haut des barres de fer : un Carré ou un Triangle ?",
-          "options": ["Carré", "Triangle"],
-          "reponse": "Triangle",
-          "indice": "C'est pointu en haut, comme le toit d'une maison.",
-          "message_succes": "VICTOIRE ! Tu as sauvé la baguette de Loulou !"
-        },
-        "visuel": {
-          "icon": "3d-etoile",
-          "color_accent": "#9b59b6"
-        }
+      "validation_radius": 20,
+      "histoire": "Loulou a renversé de la peinture magique sur la carte ! Pour commencer, il faut retrouver la couleur de l'eau.",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "De quelle couleur est l'eau sur le grand dessin ?",
+        "options": [
+          "Rouge",
+          "Bleu",
+          "Jaune"
+        ],
+        "reponse": "50ab0299c6f88a48cb8e5a3f9122f7cc8ce015641a4f18cdeece9a75361a6ff1",
+        "indice": "C'est la couleur du ciel quand il n'y a pas de nuages.",
+        "message_succes": "Bravo ! Tu as retrouvé la première trace de magie !"
       }
-    ],
-    "final": {
-      "titre": "Félicitations petit Elfe !",
-      "message": "Tu as retrouvé la baguette de Loulou. Fais un grand saut et un vœu magique pour terminer ton aventure !",
-      "recompense_id": "badge-loulou-magicien"
+    },
+    {
+      "id": "etape-2-pigeonnier",
+      "nom": "Le Nid des Messagers",
+      "instruction": "Cherche la toute petite maison avec un toit en tuiles sur l'herbe.",
+      "coords": {
+        "lat": 43.6154,
+        "lng": 1.0789
+      },
+      "validation_radius": 20,
+      "histoire": "Loulou pense que sa baguette est cachée dans cette tour miniature. Mais attention à ne pas réveiller les habitants !",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "Qui habite dans cette petite tour : des Éléphants ou des Oiseaux ?",
+        "options": [
+          "Éléphants",
+          "Oiseaux"
+        ],
+        "reponse": "09a75a98787472f8eaa141fd1ab76618368884a90c89a3eb437a57a3a4563227",
+        "indice": "Ce sont des petits animaux qui volent et font 'Cui-cui'.",
+        "message_succes": "C'est ça ! Les oiseaux t'ont montré le chemin vers la grande tour."
+      }
+    },
+    {
+      "id": "etape-3-campanile",
+      "nom": "Le Chapeau de la Tour",
+      "instruction": "Regarde la tour très haute au fond qui ressemble à un clocher.",
+      "coords": {
+        "lat": 43.6156,
+        "lng": 1.0792
+      },
+      "validation_radius": 20,
+      "histoire": "La baguette a brillé tout en haut de cette tour ! Elle est juste sous le chapeau pointu.",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "De quelle couleur est le chapeau (le toit) de la tour ?",
+        "options": [
+          "Vert",
+          "Noir",
+          "Rouge"
+        ],
+        "reponse": "36d8324d1b77a342d518bb5005cd8065440109d827c57bc05601d60f6b684ff0",
+        "indice": "C'est la couleur des fraises bien sucrées.",
+        "message_succes": "Magnifique ! Tu vois presque la baguette briller !"
+      }
+    },
+    {
+      "id": "etape-4-puits",
+      "nom": "Le Puits aux Vœux",
+      "instruction": "Trouve le grand rond en briques rouges qui ressemble à une marmite.",
+      "coords": {
+        "lat": 43.6158,
+        "lng": 1.0795
+      },
+      "validation_radius": 20,
+      "histoire": "La baguette est tombée dans le puits ! Pour la faire remonter, il faut identifier la forme secrète tout en haut du fer noir.",
+      "enigme": {
+        "type": "CHOICE",
+        "question": "Quelle forme vois-tu tout en haut des barres de fer : un Carré ou un Triangle ?",
+        "options": [
+          "Carré",
+          "Triangle"
+        ],
+        "reponse": "0a3f13c673af2389ecb9576de99764a56b808071862d4ba81083519d9fdba28f",
+        "indice": "C'est pointu en haut, comme le toit d'une maison.",
+        "message_succes": "VICTOIRE ! Tu as sauvé la baguette de Loulou !"
+      }
     }
+  ],
+  "final": {
+    "titre": "Félicitations petit Elfe !",
+    "message": "Tu as retrouvé la baguette de Loulou. Fais un grand saut et un vœu magique pour terminer ton aventure !",
+    "recompense": "Badge Petit Magicien débloqué 🪄",
+    "code_validation": "LOULOU-MAGIQUE"
   }
+}
